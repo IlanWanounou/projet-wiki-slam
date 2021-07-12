@@ -1,5 +1,5 @@
 <div class='text-center'>
-    <img src='/public/images/banniere_sio.png'>
+    <img src='/public/images/banniere_sio.png' alt='Bannière du BTS SIO par Alexandre Ghio' title='Bannière du BTS SIO par Alexandre Ghio'>
 </div>
 <nav class="nav navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Lexique</a>
