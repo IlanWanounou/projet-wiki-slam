@@ -1,0 +1,9 @@
+/** footer **/
+footer {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+    background-color: #45a1ff;
+    color: #fff;
+}
