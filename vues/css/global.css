@@ -8,4 +8,6 @@ footer {
     color: #fff;
 }
 
-.navbar-header{ text-align: center}
+.navbar-fixed{
+    width:1088px;
+}
