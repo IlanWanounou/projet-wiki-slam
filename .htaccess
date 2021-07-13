@@ -1,4 +1,4 @@
 Options +FollowSymlinks
 RewriteEngine on
 
-RewriteRule ^public/(css|images|js)/(.*)$   /vues/$1/$2 [L]
+RewriteRule ^public/(css|images|js|webfonts)/(.*)$   /vues/$1/$2 [L]
