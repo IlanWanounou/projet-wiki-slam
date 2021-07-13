@@ -6,10 +6,12 @@ require_once(__DIR__ . '/vues/v_header.php');
 ?>
 <body>
     <header>
+        <div class='container'>
         <?php
         $page = 'c#';
         require_once(__DIR__ . '/vues/v_nav.php');
         ?>
+        </div>
     </header>
     <div id="content">
         <!-- content -->
