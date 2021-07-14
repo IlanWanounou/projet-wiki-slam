@@ -1,4 +1,16 @@
 /** footer **/
 footer {
     background-color: #45a1ff;
+
+    color: #fff;
+    margin-top: auto;
 }
+
+.navbar-fixed{
+    width:1088px;
+}
+
+.row {
+    padding: 25px 0 167px 395px;
+}
+
