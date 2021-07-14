@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <ul class="nav justify-content-center">
+    <ul class="navbar-nav nav justify-content-center">
         <li class="nav-item<?php
             if ($page == 'sql') {
                 echo ' active';

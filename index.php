@@ -8,7 +8,7 @@ require_once(__DIR__ . '/vues/v_header.php');
     <div class='container'>
         <header>
             <?php
-            $page = 'c#';
+            $page = null;
             require_once(__DIR__ . '/vues/v_nav.php');
             ?>
         </header>
