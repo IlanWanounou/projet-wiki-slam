@@ -14,7 +14,7 @@ class SessionManager {
         $this->bdd = $bdd;
     }
 
-    public function isUserExist($username)
+    public function isUserExist($username) : bool
     {
         try {
             $bdd = $this->bdd;

@@ -16,10 +16,12 @@ if (isset($_POST['username'], $_POST['password']) && !empty($_POST['username']) 
     
     try {
         $session = new Session\SessionManager($bdd);        
-        $session->isUserExist($_POST['username']);
-        
-        $session->loginToAccount($_POST['username'], $_POST['password'], (isset($_POST['stayConnected']) && $_POST['stayConnected'] === 'on'));
-        $success = true;
+        if ($session->isUserExist($_POST['username'])) {
+            $session->loginToAccount($_POST['username'], $_POST['password'], (isset($_POST['stayConnected']) && $_POST['stayConnected'] === 'on'));
+            $success = true;
+        } else {
+            throw new Exception("Le couple nom d'utilisateur / mot-de-passe est incorrecte.");
+        }
     } catch (Exception $ex) {
         $error = $ex->getMessage();
     }
