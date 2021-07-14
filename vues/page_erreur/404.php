@@ -12,31 +12,17 @@ require_once(__DIR__ . '/../v_header.php');
         require_once(__DIR__ . '/../v_nav.php');
         ?>
 </header>
-    <?php require_once(__DIR__ . '/../v_error.php') ?>
     <div id="content" class="bg-light ">
-    <h1>ERREUR <?= $error = '404' ?> </h1>
-    <h2> <?= $message = 'On dirai que tu perdu' ?> </h2>
-    <a class="btn btn-primary" href="../../index.php" role="button">Revenir à l'accueil</a>
-
-        <div class="row">
-            <div class="form-group">
-                <div class="input-group">
-                    <input id="1" class="form-control" type="text" name="search" placeholder="Rechercher" required/>
-                    <span class="input-group-btn">
-                                <button class="btn btn-success" type="submit" disabled>
-                                    <i class="glyphicon glyphicon-search" aria-hidden="true"></i>Désactiver
-                                </button>
-                            </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <?php
+    $error = 404;
+    require_once(__DIR__ . '/../v_error.php');
+        ?>
 </div>
 
 <?php
 require_once(__DIR__ . '/../v_footer.php');
 ?>
+</div>
 </body>
 
 
