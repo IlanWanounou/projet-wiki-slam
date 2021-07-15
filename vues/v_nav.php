@@ -1,6 +1,6 @@
 <img src='/public/images/banniere_sio.png' class='w-100' alt='Bannière du BTS SIO par Alexandre Ghio' title='Bannière du BTS SIO par Alexandre Ghio'>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center navbar-fixed">
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center navbar-fixed w-100">
     <a class="navbar-brand" href="#">Lexique</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
