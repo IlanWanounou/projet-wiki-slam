@@ -30,7 +30,7 @@ if (isset($_POST['username'], $_POST['password']) && !empty($_POST['username']) 
 
 $meta['title'] = 'Se connecter';
 $meta['css'] = ['bootstrap.min.css', 'fontawesome.all.min.css', 'login.css'];
-$meta['js'] = ['bootstrap.min.js'];
+$meta['js'] = ['jquery-3.6.0.min.js', 'bootstrap.min.js'];
 require_once(__DIR__ . '/../../vues/v_header.php');
 ?>
 <body>
