@@ -2,5 +2,5 @@ Options +FollowSymlinks
 RewriteEngine on
 
 RewriteRule ^public/(css|images|js|webfonts)/(.*)$   /vues/$1/$2 [L]
-ErrorDocument 404 /vues/page_erreur/404.php
-ErrorDocument 403 /vues/page_erreur/403.php
+ErrorDocument 404 /controleurs/page_erreur/404.php
+ErrorDocument 403 /controleurs/page_erreur/403.php
