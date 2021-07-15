@@ -1,7 +1,10 @@
 <?php
-$meta['title'] = 'titre de la page';
-$meta['css'] = ['bootstrap.min.css'];
-$meta['js'] = ['bootstrap.min.js'];
+session_start();
+
+$meta['title'] = 'Lexique - BTS SIO SLAM';
+$meta['css'] = ['bootstrap.min.css', 'fontawesome.all.min.css'];
+$meta['js'] = ['jquery-3.6.0.min.js', 'bootstrap.min.js'];
+require_once(__DIR__ . '/controleurs/session.php');
 require_once(__DIR__ . '/vues/v_header.php');
 ?>
 <body>
@@ -17,6 +20,6 @@ require_once(__DIR__ . '/vues/v_header.php');
         </div>
     </div>
     <?php
-    require_once(__DIR__ . '/vues/v_footer.php')
+    require_once(__DIR__ . '/vues/v_footer.php');
     ?>
 </body>

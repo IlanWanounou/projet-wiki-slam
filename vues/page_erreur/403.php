@@ -1,7 +1,7 @@
 <?php
 $meta['title'] = 'Erreur 404';
-$meta['css'] = ['bootstrap.min.css'];
-$meta['js'] = ['bootstrap.min.js'];
+$meta['css'] = ['bootstrap.min.css', 'fontawesome.all.min.css'];
+$meta['js'] = ['jquery-3.6.0.min.js', 'bootstrap.min.js'];
 require_once(__DIR__ . '/../v_header.php');
 ?>
 <div>
