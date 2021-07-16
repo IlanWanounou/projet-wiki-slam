@@ -1,0 +1,10 @@
+/* font-family: 'Lato', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+.sidebar .nav-link.active, .sidebar .nav-link.active span, .sidebar a.nav-link:hover {
+    color: #007bff;
+}
+.sidebar .nav-link, .text-color-default {
+    font-weight: 500;
+    color: #333;
+}
