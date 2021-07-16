@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-group">
                             <label for="form-image">Image</label>
-                            <input  type="text" name="image" placeholder="imahe" id="form-image" class="form-control" rows="3" cols="30" required>
+                            <input  type="file" accept="image/*" name="image" placeholder="imahe" id="form-image" class="form-control" rows="3" cols="30" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg">Envoyer</button>
 

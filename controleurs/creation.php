@@ -27,14 +27,14 @@ class CreationDef
     {
         try {
             $bdd = $this->bdd;
-            //$urlImage = $this->uploadImage($image);
+            $urlImage = $this->uploadImage($image);
             $requete = $bdd->prepare('INSERT INTO article (`article_id`, `titre`, `contenue`, `phrase_intro`, `image`, `created_at`, `updated_at`, `deleted_at`) VALUES (NULL, :titre, :contenue, :intro, :image, CURRENT_TIMESTAMP, NULL, NULL)');
 
             $requete->execute(array(
                 'titre' => $titre,
                 'contenue' => $contenue,
                 'intro' => $intro,
-                'image' => $image
+                'image' => $urlImage
             ));
             $message = 'Votre article a bien été posté';
             $requete->closeCursor();

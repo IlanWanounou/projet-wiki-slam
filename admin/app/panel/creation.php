@@ -13,8 +13,8 @@ require_once(__DIR__ . '/../../../controleurs/bdd.php');
 require_once(__DIR__ . '/../../../controleurs/creation.php');
 try {
     $creation = new Creation\CreationDef($bdd);
-    if(isset($_POST['titre']) &&  isset($_POST['contenue']) && isset($_POST['intro']) && isset($_POST['image']) && !empty($_POST['titre'] && $_POST['contenue'] &&  $_POST['intro'])  && $_POST['image']) {
-        $creation->insertArticle(($_POST['titre']), ($_POST['contenue']), ($_POST['intro']), ($_POST['image']) );
+    if(isset($_POST['titre']) &&  isset($_POST['contenue']) && isset($_POST['intro']) && isset($_FILES['image']) && !empty($_POST['titre'] && $_POST['contenue'] &&  $_POST['intro'])  && $_FILES['image']) {
+        $creation->insertArticle(($_POST['titre']), ($_POST['contenue']), ($_POST['intro']), ($_FILES['image']) );
     }
 } catch (Exception $ex) {
     $error = $ex->getMessage();
