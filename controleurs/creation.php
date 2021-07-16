@@ -13,7 +13,7 @@ class CreationDef
     {
         $this->bdd = $bdd;
     }
-    
+
     private function uploadImage($image) {
         $target_dir = "/public/images/uploads/";
         $target_file = $target_dir . basename($_FILES[$image]["name"]);
@@ -27,9 +27,8 @@ class CreationDef
     {
         try {
             $bdd = $this->bdd;
-
             $urlImage = $this->uploadImage($image);
-            $requete = $bdd->prepare('INSERT INTO article (`article_id`, `titre`, `contenue`, `phrase_intro`, `image` `created_at`, `updated_at`, `deleted_at`  ) VALUES (NULL, :titre, :contenue, :intro, :image, CURRENT_TIMESTAMP, NULL , NULL )');
+            $requete = $bdd->prepare('INSERT INTO article (`article_id`, `titre`, `contenue`, `phrase_intro`, `image`, `created_at`, `updated_at`, `deleted_at`) VALUES (NULL, :titre, :contenue, :intro, :image, CURRENT_TIMESTAMP, NULL, NULL)');
 
             $requete->execute(array(
                 'titre' => $titre,
