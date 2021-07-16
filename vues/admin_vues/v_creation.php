@@ -35,7 +35,13 @@
                 <?php } ?>
                 </div>
             </div>
-</div>
 </body>
 
+
+
+<?php $meta['title'] = 'Se connecter';
+$meta['css'] = ['bootstrap.min.css', 'fontawesome.all.min.css', 'login.css'];
+$meta['js'] = ['jquery-3.6.0.min.js', 'bootstrap.min.js'];
+require_once(__DIR__ . '/../../vues/v_header.php');
+?>
 

@@ -1,5 +1,6 @@
 <?php
 
+
 $meta['title'] = 'Creation d\'une définition';
 $meta['css'] = ['bootstrap.min.css', 'fontawesome.all.min.css', 'login.css'];
 $meta['js'] = ['jquery-3.6.0.min.js', 'bootstrap.min.js'];
@@ -19,7 +20,6 @@ try {
     $error = $ex->getMessage();
 }
 ?>
-<body>
-<?php require_once(__DIR__ . '/../../../vues/admin_vues/v_creation.php'); ?>
-</body>
+
+
 

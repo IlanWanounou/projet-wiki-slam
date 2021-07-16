@@ -10,8 +10,7 @@ require_once(__DIR__ . '/../../controleurs/session.php');
 
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav nav w-100 justify-content-center">
-            <li class="nav-item
-            <?php
+            <li class="nav-item" <?php
             if ($page == 'creation') {
                 echo ' active';
             }
@@ -25,6 +24,7 @@ require_once(__DIR__ . '/../../controleurs/session.php');
             ?>">
                 <a class="nav-link" href="">Edition</a>
             </li>
+
             <li class="nav-item<?php
             if ($page == 'suppr') {
                 echo ' active';
@@ -32,6 +32,7 @@ require_once(__DIR__ . '/../../controleurs/session.php');
             ?>">
                 <a class="nav-link" href="">Suppression</a>
             </li>
+
         </ul>
     </div>
     <?php
