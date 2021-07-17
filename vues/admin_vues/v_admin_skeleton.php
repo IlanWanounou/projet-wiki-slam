@@ -5,8 +5,8 @@ $meta['css'][] = 'fontawesome.all.min.css';
 $meta['js'][]  = 'jquery-3.6.0.min.js';
 $meta['js'][]  = 'bootstrap.min.js';
 
-require_once(__DIR__ . '/../modele/navbaritems.php');
-require_once(__DIR__ . '/v_header.php');
+require_once(__DIR__ . '/../../modele/navbaritems.php');
+require_once(__DIR__ . '/../v_header.php');
 ?>
 <body>
     <?php
