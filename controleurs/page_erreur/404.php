@@ -1,7 +1,7 @@
 <?php
 session_start();
 $meta['title'] = 'Erreur 404';
-$meta['css'] = ['bootstrap.min.css', 'fontawesome.all.min.css'];
+$meta['css'] = ['bootstrap.min.css', 'fontawesome.all.min.css', 'error.css'];
 $meta['js'] = ['jquery-3.6.0.min.js', 'bootstrap.min.js'];
 require_once(__DIR__ . '/../../vues/v_header.php');
 ?>
