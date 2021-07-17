@@ -16,7 +16,7 @@ switch ($requestedPage) {
     case 'logout':
         require_once(__DIR__ . '/app/logout.php');
         break;
-    case 'creation':
+    case 'articles/add':
         require_once(__DIR__ . '/app/panel/creation.php');
         break;
     default:
