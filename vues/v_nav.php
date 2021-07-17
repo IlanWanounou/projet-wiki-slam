@@ -30,7 +30,7 @@ if (!isset($currentPage)) {
                         echo ' active';
                     }
                     ?>">
-                    <a class="nav-link" href="/article/<?=$id?>-<?=$name?>"><?=$name?></a>
+                    <a class="nav-link" href="/article/<?=$id?>-<?=filter_var($name, FILTER_SANITIZE_ENCODED)?>"><?=$name?></a>
                 </li>
                 <?php
             }
