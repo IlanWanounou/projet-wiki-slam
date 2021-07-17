@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() !== 2) {
+    session_start();
+}
+
 $meta['title'] = 'Erreur 403';
 $meta['css'] = ['bootstrap.min.css', 'fontawesome.all.min.css', 'error.css'];
 $meta['js'] = ['jquery-3.6.0.min.js', 'bootstrap.min.js'];

@@ -1,5 +1,13 @@
 <?php
+require_once(__DIR__ . '/../controleurs/bdd.php');
 require_once(__DIR__ . '/../controleurs/session.php');
+require_once(__DIR__ . '/../controleurs/articleManager.php');
+$articleManager = new Article\ArticleManager($bdd);
+
+$pages = $articleManager->getAllArticles($bdd);
+if (!isset($parseArticleId)) {
+    $parseArticleId = null;
+}
 ?>
 
 <img src='/public/images/banniere_sio.png' class='w-100' alt='Bannière du BTS SIO par Alexandre Ghio' title='Bannière du BTS SIO par Alexandre Ghio'>
@@ -12,61 +20,36 @@ require_once(__DIR__ . '/../controleurs/session.php');
 
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav nav w-100 justify-content-center">
-            <li class="nav-item<?php
-                if ($page == 'sql') {
-                    echo ' active';
+            <?php
+            foreach ($pages as $id => $name) {
+                if (!is_int($id)) {
+                    $id = 'undefined';
                 }
-                ?>">
-                <a class="nav-link" href="/sql">SQL</a>
-            </li>
-            <li class="nav-item<?php
-                if ($page == 'c#') {
-                    echo ' active';
-                }
-                ?>">
-                    <a class="nav-link" href="/c-sharp">C#</a>
-            </li>
-            <li class="nav-item<?php
-                if ($page == 'php') {
-                    echo ' active';
-                }
-                ?>">
-                    <a class="nav-link" href="/php">PHP</a>
-            </li>
-            <li class="nav-item<?php
-                if ($page == 'html') {
-                    echo ' active';
-                }
-                ?>">
-                    <a class="nav-link" href="/html">HTML</a>
-            </li>
-            <li class="nav-item<?php
-                if ($page == 'css') {
-                    echo ' active';
-                }
-                ?>">
-                    <a class="nav-link" href="/css">CSS</a>
-            </li>
-            <li class="nav-item<?php
-                if ($page == 'js') {
-                    echo ' active';
-                }
-                ?>">
-                    <a class="nav-link" href="/js">JS</a>
-            </li>
+                $name = htmlspecialchars($name);
+                ?>
+                <li class="nav-item<?php
+                    if ($id == $parseArticleId) {
+                        echo ' active';
+                    }
+                    ?>">
+                    <a class="nav-link" href="/article/<?=$id?>-<?=$name?>"><?=$name?></a>
+                </li>
+                <?php
+            }
+            ?>
         </ul>
     </div>
     <?php
     if (Session\SessionManager::isConnected()) {
         ?>
-        <div class="nav-item align-self-center">
+        <div class="nav-item align-self-center text-right w-190">
             <a class="btn btn-info btn-sm"  href="/admin/panel"><i class="fas fa-cog"></i> Gérer le site</a>
-            <a class="btn btn-danger btn-sm" title="Se déconnecter" href="/admin/logout"><i class="fas fa-sign-out-alt"></i></i></a>
+            <a class="btn btn-danger btn-sm" title="Se déconnecter" href="/admin/logout"><i class="fas fa-sign-out-alt"></i></a>
         </div>
         <?php
     } else {
         ?>
-        <div class="nav-item align-self-center">
+        <div class="nav-item align-self-center text-right w-190">
             <a class="btn btn-info btn-sm" href="/admin/login"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
         </div>
         <?php
