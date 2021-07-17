@@ -33,4 +33,34 @@ class ArticleManager {
         }
     }
 
+    public function getName($articleId)
+    {
+        try {
+            $bdd = $this->bdd;
+            $requete = $bdd->prepare('SELECT `titre` as `title` FROM article WHERE `article_id` = ?');
+            $requete->execute(array(
+                $articleId
+            ));
+            return $requete->fetch()[0];
+            
+        } catch (Throwable $e) {
+            throw new Exception("Erreur interne du serveur");
+        }
+    }
+
+    public function getContent($articleId)
+    {
+        try {
+            $bdd = $this->bdd;
+            $requete = $bdd->prepare('SELECT `contenue` as `content` FROM article WHERE `article_id` = ?');
+            $requete->execute(array(
+                $articleId
+            ));
+            return $requete->fetch()['content'];
+            
+        } catch (Throwable $e) {
+            throw new Exception("Erreur interne du serveur");
+        }
+    }
+
 }
