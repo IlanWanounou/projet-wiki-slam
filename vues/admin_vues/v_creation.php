@@ -2,7 +2,7 @@
 <div class='container'>
 
 
-    <h1 class="text-center">Creation d'une définition</h1>
+    <h1 class="text-center">Ajout d'un article</h1>
 
             <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
                 <br class="px-2">
@@ -25,7 +25,7 @@
                             <label for="form-image">Image</label>
                             <input  type="file" accept="image/*" name="image" id="form-image" class="form-control"required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg">Envoyer</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>
 
                     </form>
                 </div>

@@ -11,6 +11,6 @@ use Services\Admin\Manager\AdminManager as AdminManager;
 $currentPagePath   = AdminManager::getCurrentPagePath();
 $currentConfigPage = AdminManager::getCurrentPageConfig($admin_pages);
 $loadContentName   = '';
+require_once(__DIR__ . '/../../../vues/admin_vues/v_admin_skeleton.php');
 
-require_once(__DIR__ . '/../../../vues/v_admin_skeleton.php');
 
