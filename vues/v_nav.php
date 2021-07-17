@@ -1,10 +1,12 @@
 <?php
+require_once(__DIR__ . '/../controleurs/bdd.php');
 require_once(__DIR__ . '/../controleurs/session.php');
 require_once(__DIR__ . '/../controleurs/articleManager.php');
 $articleManager = new Article\ArticleManager($bdd);
+
 $pages = $articleManager->getAllArticles($bdd);
-if (!isset($currentPage)) {
-    $currentPage = null;
+if (!isset($parseArticleId)) {
+    $parseArticleId = null;
 }
 ?>
 
