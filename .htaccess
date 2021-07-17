@@ -2,5 +2,6 @@ Options +FollowSymlinks
 RewriteEngine on
 
 RewriteRule ^public/(css|images|js|webfonts)/(.*)$   /vues/$1/$2 [L]
+RewriteRule ^article/(0-9)/(.*)$                     /index.php?articleId=$1&articleName=$2 [QSA]
 ErrorDocument 404 /controleurs/page_erreur/404.php
 ErrorDocument 403 /controleurs/page_erreur/403.php
