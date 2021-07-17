@@ -14,35 +14,50 @@ class CreationDef
         $this->bdd = $bdd;
     }
 
-    private function uploadImage($image) {
-        $target_dir = "/public/images/uploads/";
-        $target_file = $target_dir . basename($_FILES[$image]["name"]);
-        (move_uploaded_file($_FILES[$image]["tmp_name"], $target_file));
-
-        return htmlspecialchars( basename( $_FILES[$image]["name"]));
-
-    }
-
     public function insertArticle($titre, $contenue, $intro, $image)
     {
         try {
+            $isUpload = false;
             $bdd = $this->bdd;
-            $urlImage = $this->uploadImage($image);
-            $requete = $bdd->prepare('INSERT INTO article (`article_id`, `titre`, `contenue`, `phrase_intro`, `image`, `created_at`, `updated_at`, `deleted_at`) VALUES (NULL, :titre, :contenue, :intro, :image, CURRENT_TIMESTAMP, NULL, NULL)');
-
-            $requete->execute(array(
-                'titre' => $titre,
-                'contenue' => $contenue,
-                'intro' => $intro,
-                'image' => $urlImage
-            ));
-            $message = 'Votre article a bien été posté';
-            $requete->closeCursor();
+            $isUpload = $this->uploadImage($image);
+            if ($isUpload) {
+                $requete = $bdd->prepare('INSERT INTO article (`article_id`, `titre`, `contenue`, `phrase_intro`, `image`, `created_at`, `updated_at`, `deleted_at`) VALUES (NULL, :titre, :contenue, :intro, :image, CURRENT_TIMESTAMP, NULL, NULL)');
+                $requete->execute(array(
+                    'titre' => $titre,
+                    'contenue' => $contenue,
+                    'intro' => $intro,
+                    'image' => ($image['name'])
+                ));
+                $message = 'Votre article a bien été posté';
+                $requete->closeCursor();
+            } else {
+                $message = "Erreur";
+            }
 
         } catch (Throwable $e) {
             throw new Exception("Erreur");
 
         }
+    }
+
+    private function uploadImage($image): bool
+    {
+        $target_dir = "../vues/images/uploads/";
+        $target_file = $target_dir . basename(($image['name']));
+
+        if (getimagesize(($image["tmp_name"]))) {
+            if (file_exists($target_file)) {
+                return false;
+            }
+            if (count(scandir($target_dir)) >= 20) {
+                return false;
+            }
+
+            if (move_uploaded_file(($image["tmp_name"]), $target_file)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
