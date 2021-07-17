@@ -33,6 +33,21 @@ class ArticleManager {
         }
     }
 
+    public function articleExists($articleId) : bool
+    {
+        try {
+            $bdd = $this->bdd;
+            $requete = $bdd->prepare('SELECT COUNT(*) FROM article WHERE `article_id` = ?');
+            $requete->execute(array(
+                $articleId
+            ));
+            return $requete->fetch()[0] == 1;
+            
+        } catch (Throwable $e) {
+            throw new Exception("Erreur interne du serveur");
+        }
+    }
+
     public function getName($articleId)
     {
         try {
