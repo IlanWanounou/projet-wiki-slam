@@ -26,11 +26,11 @@ if (!isset($currentPage)) {
                 $name = htmlspecialchars($name);
                 ?>
                 <li class="nav-item<?php
-                    if ($currentPage == $id . '/' . $name) {
+                    if ($id == $parseArticleId) {
                         echo ' active';
                     }
                     ?>">
-                    <a class="nav-link" href="/article/<?=$id?>-<?=filter_var($name, FILTER_SANITIZE_ENCODED)?>"><?=$name?></a>
+                    <a class="nav-link" href="/article/<?=$id?>-<?=$name?>"><?=$name?></a>
                 </li>
                 <?php
             }
