@@ -6,14 +6,19 @@ $(document).ready(function () {
         const [file] = fileid.files
         if (file) {
             preview.src = URL.createObjectURL(file)
-            $('#form-delete').removeAttr('disabled');
+            $('#form-favicon-delete').removeAttr('hidden');
+            $('#form-favicon-push').removeAttr('hidden');
+            $('#fav-prev-msg').html('Prévisualisation du favicon : ');
         }
-        fileid.value = '';
     }
-    $('#form-delete').click(function(){
+    $('#form-favicon-delete').click(function(){
         preview.src = '/favicon.ico';
-        $('#form-delete').attr('disabled', '');
+        $('#form-favicon-delete').attr('hidden', '');
+        $('#form-favicon-push').attr('hidden', '');
+        fileid.value = '';
+        $('#fav-prev-msg').html('Favicon actuel : ');
     });
+
 });
 
 
