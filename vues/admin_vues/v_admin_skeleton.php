@@ -2,8 +2,10 @@
 
 $meta['css'][] = 'bootstrap.min.css';
 $meta['css'][] = 'fontawesome.all.min.css';
-$meta['js'][]  = 'jquery-3.6.0.min.js';
 $meta['js'][]  = 'bootstrap.min.js';
+$meta['js'][]  = 'jquery-3.6.0.min.js';
+$meta['css']   = array_reverse($meta['css']);
+$meta['js']    = array_reverse($meta['js']);
 
 require_once(__DIR__ . '/../../modele/navbaritems.php');
 require_once(__DIR__ . '/../v_header.php');

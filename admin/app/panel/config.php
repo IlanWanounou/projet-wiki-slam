@@ -1,7 +1,8 @@
 <?php
 
 $meta['title'] = 'Ajouter une page';
-$meta['css'] = ['admin.css'];
+$meta['css']   = ['admin.css'];
+$meta['js']    = ['admin.js'];
 
 require_once(__DIR__ . '/../../../modele/navbaritems.php');
 require_once(__DIR__ . '/../../../controleurs/adminManager.php');
