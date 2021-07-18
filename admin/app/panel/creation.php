@@ -1,6 +1,7 @@
 <?php
 $meta['title'] = 'Panel admin - Ajout d\'un article';
 $meta['css'] = ['admin.css'];
+$meta['js'] = ['index.js'];
 require_once(__DIR__ . '/../../../modele/navbaritems.php');
 require_once(__DIR__ . '/../../../controleurs/adminManager.php');
 require_once(__DIR__ . '/../../../controleurs/creation.php');
