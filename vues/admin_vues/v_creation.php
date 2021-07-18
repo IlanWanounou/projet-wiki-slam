@@ -11,6 +11,18 @@
 
 
         <form method="post" id="creationForm" enctype="multipart/form-data" class="justify-content-center">
+            <?php if (isset($success) && $success) {
+                ?>
+                <div class="alert alert-success mt-4" role="alert">
+                    Article mis en ligne.
+                </div>
+            <?php } else {
+                ?>
+                <div class="alert alert-danger mt-4" role="alert">
+                    Echec l'article n'est pas en ligne.
+                </div>
+                <?php
+            } ?>
             <div class="form-group">
                 <label for="form-titre">Titre</label>
 
@@ -34,6 +46,7 @@
             <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>
 
         </form>
+
     </div>
 </body>
 
