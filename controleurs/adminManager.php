@@ -7,7 +7,7 @@ abstract class AdminManager {
     public static function getCurrentPagePath() {
         $repertories = explode("/", $_SERVER['REQUEST_URI']);
         array_splice($repertories, 0, 2);
-        return implode("/", $repertories);
+        return preg_replace('/\?(.*)/', '', implode("/", $repertories));
     }
     public static function getCurrentPageConfig($pages) {
         foreach ($pages as $item) {
