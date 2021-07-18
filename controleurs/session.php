@@ -57,4 +57,13 @@ class SessionManager {
     {
         return (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['pass']));
     }
+
+    public static function rootInAdmin($dir)
+    {
+        if (SessionManager::isConnected()) {
+            return $dir;
+        } else {
+            return __DIR__ . '/../admin/app/login.php';
+        }
+    }
 }
