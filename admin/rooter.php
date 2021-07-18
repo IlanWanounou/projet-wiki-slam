@@ -19,9 +19,6 @@ switch ($requestedPage) {
     case 'configuration':
         require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/config.php'));
         break;
-    case 'configuration':
-        require_once(__DIR__ . '/app/panel/config.php');
-        break;
     case 'articles/add':
         require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/creation.php'));
         break;
