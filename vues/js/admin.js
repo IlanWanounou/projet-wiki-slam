@@ -18,6 +18,9 @@ $(document).ready(function () {
         fileid.value = '';
         $('#fav-prev-msg').html('Favicon actuel : ');
     });
+    $('#form-maintenance-on').click(function() {
+        let isExecuted = confirm("Êtes vous sur de vouloir mettre en maintenance le site ?");
+    })
 
 });
 

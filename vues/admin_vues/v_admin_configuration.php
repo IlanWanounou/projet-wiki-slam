@@ -23,7 +23,18 @@ if (isset($success)) {
 <div class="form-group">
     <label for="form-maintenance"><span class="badge badge-primary rounded-circle"><i class="fas fa-lock"></i></span> <b>Maintenance du site</b></label>
     <small class="form-text text-muted mb-2">Activer la maintenance permet d'interdire l'accès au site aux utilisateurs.</small>
-    <button type="button" id="form-maintenance-on" class="btn btn-danger btn-sm"><i class="fas fa-exclamation-triangle"></i> Activer</button>
-    <button type="button" id="form-maintenance-off" class="btn btn-primary btn-sm" disabled>Désactiver</button>
+    <?php
+    if (isset($_SERVER['maintenance']) && $_SERVER['maintenance'] === true) {
+        ?>
+        <button type="button" id="form-maintenance-on" class="btn btn-danger btn-sm" disabled><i class="fas fa-exclamation-triangle"></i> Activer</button>
+        <button type="button" id="form-maintenance-off" class="btn btn-primary btn-sm">Désactiver</button>
+        <?php
+    } else {
+        ?>
+        <button type="button" id="form-maintenance-on" class="btn btn-danger btn-sm"><i class="fas fa-exclamation-triangle"></i> Activer</button>
+        <button type="button" id="form-maintenance-off" class="btn btn-primary btn-sm" disabled>Désactiver</button>
+        <?php
+    }
+    ?>
 </div>
 <button type="submit" class="btn btn-primary mb-2" disabled>Envoyer</button>
