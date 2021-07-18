@@ -1,7 +1,7 @@
     window.onload = function () {
     var toolbarOptions = [
         ['bold', 'italic', 'underline', 'strike'],
-        ['blockquote', 'code-block'],
+        ['blockquote', 'code-block', 'image'],
 
         [{ 'header': 1 }, { 'header': 2 }],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
