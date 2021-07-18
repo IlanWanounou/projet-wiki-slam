@@ -1,10 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/hybrid.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<script>hljs.initHighlightingOnLoad();</script>
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<script href="highlight.js">
-</script>
 
 <body>
 <div class='container'>
