@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Ilan Wanounou, Angelo Tremoureux">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     <title><?= $meta['title'] ?></title>
     <link href="/public/css/global.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/hybrid.min.css">
