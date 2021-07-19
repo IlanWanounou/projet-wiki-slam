@@ -1,4 +1,6 @@
 Options +FollowSymlinks
 RewriteEngine on
 
+
+RewriteRule ^articles\/edit\/([0-9]*)$                     rooter.php?action=articles/edit&article=$1 [QSA]
 RewriteRule ^((?!rooter\.php).)*$  rooter.php?action=$0 [QSA]

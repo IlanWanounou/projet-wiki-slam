@@ -14,7 +14,7 @@ class CreationDef
         $this->bdd = $bdd;
     }
 
-    public function insertArticle($titre, $contenue, $intro, $image)
+    public function insertArticle($titre, $contenue, $intro, $image) : bool
     {
         try {
             $isUpload = false;
@@ -30,8 +30,9 @@ class CreationDef
                 ));
                 $message = 'Votre article a bien été posté';
                 $requete->closeCursor();
+                return true;
             } else {
-                $message = "Erreur";
+                return false;
             }
 
         } catch (Throwable $e) {
@@ -40,7 +41,7 @@ class CreationDef
         }
     }
 
-    private function uploadImage($image): bool
+    public static function uploadImage($image): bool
     {
         $target_dir = "../vues/images/uploads/";
         $target_file = $target_dir . basename(($image['name']));

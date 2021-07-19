@@ -11,6 +11,18 @@
 
 
         <form method="post" id="creationForm" enctype="multipart/form-data" class="justify-content-center">
+            <?php if (isset($success) && $success) {
+                ?>
+                <div class="alert alert-success mt-4" role="alert">
+                    Article mis en ligne.
+                </div>
+            <?php } else {
+                ?>
+                <div class="alert alert-danger mt-4" role="alert">
+                    Echec l'article n'est pas en ligne.
+                </div>
+                <?php
+            } ?>
             <div class="form-group">
                 <label for="form-titre">Titre</label>
 
@@ -30,10 +42,11 @@
                 <label for="form-image">Image</label>
                 <input  type="file" accept="image/*" name="image" id="form-image" class="form-control"required>
             </div>
-            <input type="hidden" id="content" name="contenue">
+            <input class="form-group" type="hidden" id="content" name="contenue">
             <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>
 
         </form>
+
     </div>
 </body>
 
