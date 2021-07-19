@@ -8,5 +8,6 @@ $maintenance = new Maintenance\Maintenance($bdd);
 $session     = new Session\SessionManager($bdd);
 if ($maintenance->isMaintenance() && !$session->isConnected()) {
     header('Location: /admin/login');
+    $isMaintenance = true;
     die();
 }
