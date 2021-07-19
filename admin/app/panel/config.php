@@ -19,7 +19,7 @@ $maintenance = new Maintenance\Maintenance($bdd);
 if (isset($_SESSION['token'], $_GET['t']) && $_SESSION['token'] == $_GET['t']) {
     $success = 'Les modifications ont bien été effectuées';
     $_SESSION['token'] = null;
-} else if (isset($_FILES['uploadFavicon'])) {
+} elseif (isset($_FILES['uploadFavicon'])) {
     try {
         Services\Admin\Manager\ConfigManager::uploadFavicon($_FILES['uploadFavicon']);
         // Détruit les surcharges serveurs avec le refresh button
@@ -29,12 +29,17 @@ if (isset($_SESSION['token'], $_GET['t']) && $_SESSION['token'] == $_GET['t']) {
     } catch (Exception $ex) {
         echo $ex->getMessage();
     }
-} else if (isset($_POST['maintenance'])) {
+} elseif (isset($_POST['maintenance'])) {
     if ($maintenance->isMaintenance()) {
         $maintenance->setMaintenance(false);
     } else {
         $maintenance->setMaintenance(true);
     }
     sleep(1);
+} elseif (isset($_POST['footer-content-1'], $_POST['footer-content-2'])) {
+    $footer = array($_POST['footer-content-1'], $_POST['footer-content-2']);
+    Services\Admin\Manager\ConfigManager::setFooter($bdd, $footer);
+    header('Location: #');
 }
+$contentFooter = Services\Admin\Manager\ConfigManager::getFooter($bdd);
 require_once(__DIR__ . '/../../../vues/admin_vues/v_admin_skeleton.php');

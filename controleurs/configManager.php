@@ -23,4 +23,28 @@ abstract class ConfigManager {
         
     }
 
+    public static function getFooter($bdd) : array
+    {
+        try {
+            $requete = $bdd->query('SELECT `footerTop`, `footerBottom` FROM config');
+            $footers = $requete->fetch();
+            return $footers;
+        } catch (Throwable $e) {
+            throw new Exception("Erreur interne du serveur");
+        }
+    }
+
+    public static function setFooter($bdd, array $footer) : void
+    {
+        try {
+            $requete = $bdd->prepare('UPDATE `config` SET `footerTop` = ?, `footerBottom` = ?');
+            $requete->execute(array(
+                $footer[0],
+                $footer[1]
+            ));
+        } catch (Throwable $e) {
+            throw new Exception("Erreur interne du serveur");
+        }
+    }
+
 }

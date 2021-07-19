@@ -12,3 +12,7 @@
     width: 50px;
     height: 50px;
 }
+#content .form-group span.badge {
+    height: 22px;
+    width: 22px;
+}

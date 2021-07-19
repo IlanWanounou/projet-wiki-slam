@@ -50,6 +50,27 @@ $(document).ready(function () {
         $('.form-group.maintenance').load(document.URL + ' .form-group.maintenance > div');
     }
 
+    const initFooter1 = $('#footer-content-1').val();
+    const initFooter2 = $('#footer-content-2').val();
+
+    $('.form-group.footer input').keyup(function (e) {
+        verifFooter();
+    });
+    document.getElementById('footer-form').addEventListener('reset', reset);
+
+    function verifFooter() {
+        if ($('#footer-content-1').val() == initFooter1 && $('#footer-content-2').val() == initFooter2) {
+            reset()
+        } else {
+            $('#send-footer-content').removeAttr('disabled');
+            $('#reset-footer-content').removeAttr('disabled');
+        }
+    }
+    
 });
+function reset() {
+    $('#send-footer-content').attr('disabled', '');
+    $('#reset-footer-content').attr('disabled', '');
+}
 
 

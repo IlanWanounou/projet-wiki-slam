@@ -1,6 +1,11 @@
-<footer class=' text-center p-1 text-white'>
+<?php
 
-<p>© Ilan Wanounou - Angelo Tremoureux 2021 </p>
-    <p>BTS SIO SLAM - Lycée Bonaparte</p>
+require_once(__DIR__ . '/../controleurs/bdd.php');
+require_once(__DIR__ . '/../controleurs/configManager.php');
+$footer = Services\Admin\Manager\ConfigManager::getFooter($bdd);
+?>
 
+<footer class='text-center p-1 text-white'>
+    <?= $footer[0]; ?>
+    <?= $footer[1]; ?>
 </footer>
