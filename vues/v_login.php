@@ -5,38 +5,46 @@ if (!isset($username)) {
 ?>
 <form method="post">
     <?php
-    if (isset($error) && $error) {
-    ?>
-    <div class="alert alert-danger fade-in" role="alert">
-        <i class="fas fa-times"></i>
-        <?= $error ?>
-    </div>
-    <?php
-    } else if (isset($success) && $success) {
-    ?>
-    <div class="alert alert-success" role="alert">
-        <i class="fas fa-spinner fa-spin font-weight-bold"></i>
-        Connexion réussie. Redirection en cours...
-    </div>
-    <script>
-    setTimeout(() => {
-        window.location.replace("/admin/panel");
-    }, 2000);
-    </script>
-    <noscript>
-        <div class="alert alert-danger" role="alert">
-            <i class="fas fa-times"></i>
-            Javascript est désactivé dans votre navigateur web. Pour revenir a l'accueil, cliquez <a href="/">ici</a>.
+    if (isset($isMaintenance) && $isMaintenance) {
+        ?>
+        <div class="alert alert-warning" role="alert">
+            <i class="fas fa-ban"></i>
+            Le site est actuellement en maintenance
         </div>
-    </noscript>
-    <?php
+        <?php
+    }
+    if (isset($error) && $error) {
+        ?>
+        <div class="alert alert-danger fade-in" role="alert">
+            <i class="fas fa-times"></i>
+            <?= $error ?>
+        </div>
+        <?php
+    } else if (isset($success) && $success) {
+        ?>
+        <div class="alert alert-success" role="alert">
+            <i class="fas fa-spinner fa-spin font-weight-bold"></i>
+            Connexion réussie. Redirection en cours...
+        </div>
+        <script>
+        setTimeout(() => {
+            window.location.replace("/admin/panel");
+        }, 2000);
+        </script>
+        <noscript>
+            <div class="alert alert-danger" role="alert">
+                <i class="fas fa-times"></i>
+                Javascript est désactivé dans votre navigateur web. Pour revenir a l'accueil, cliquez <a href="/">ici</a>.
+            </div>
+        </noscript>
+        <?php
     } else if (isset($logoutBefore) && $logoutBefore) {
-    ?>
-    <div class="alert alert-success" role="alert">
-        <i class="fas fa-check"></i>
-        Vous avez été correctement déconnecté
-    </div>
-    <?php
+        ?>
+        <div class="alert alert-success" role="alert">
+            <i class="fas fa-check"></i>
+            Vous avez été correctement déconnecté
+        </div>
+        <?php
     }
     ?>
     <div class="form-group">
