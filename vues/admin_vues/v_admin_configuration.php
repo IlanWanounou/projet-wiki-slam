@@ -48,5 +48,4 @@
             ?>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary mb-2" disabled>Envoyer</button>
 </div>
