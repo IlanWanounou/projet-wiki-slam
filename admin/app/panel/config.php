@@ -1,6 +1,6 @@
 <?php
 
-$meta['title'] = 'Ajouter une page';
+$meta['title'] = 'Configuration du site';
 $meta['css']   = ['admin.css'];
 $meta['js']    = ['admin.js'];
 
@@ -40,6 +40,8 @@ if (isset($_SESSION['token'], $_GET['t']) && $_SESSION['token'] == $_GET['t']) {
     $footer = array($_POST['footer-content-1'], $_POST['footer-content-2']);
     Services\Admin\Manager\ConfigManager::setFooter($bdd, $footer);
     header('Location: #');
+} elseif (isset($_POST['css'])) {
+    $contentCss = Services\Admin\Manager\ConfigManager::setCss($_POST['css']);
 }
 $contentCss    = Services\Admin\Manager\ConfigManager::getCss($bdd);
 $contentFooter = Services\Admin\Manager\ConfigManager::getFooter($bdd);

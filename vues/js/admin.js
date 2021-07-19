@@ -66,8 +66,10 @@ $(document).ready(function () {
             $('#reset-footer-content').removeAttr('disabled');
         }
     }
+
+    var editor;
     
-    var editor = CodeMirror.fromTextArea(document.getElementById("myTextArea"), {
+    editor = CodeMirror.fromTextArea(document.getElementById("myTextArea"), {
         lineNumbers: true,
         styleActiveLine: true,
         matchBrackets: true,
@@ -91,8 +93,26 @@ $(document).ready(function () {
     }
 
     $('#send-css-content').click(function() {
-        alert(editor.getValue());
-    })
+        $.post('',
+        {
+            css: editor.getValue()
+        }, function(data) {
+            document.location.reload();
+        });
+    });
+
+    $('#reset-css-content').click(function() {
+        $('.CodeMirror').remove('');
+        $('.CodeMirror-code').html(initCodeCss);
+        editor = CodeMirror.fromTextArea(document.getElementById("myTextArea"), {
+            lineNumbers: true,
+            styleActiveLine: true,
+            matchBrackets: true,
+            mode: 'css',
+            theme: 'ayu-dark',
+            indentUnit: 4
+        });
+    });
     
     
 });

@@ -50,10 +50,19 @@ abstract class ConfigManager {
     public static function getCss() : string
     {
         try {
-            $myfile = fopen(__DIR__ . "/../vues/css/global.css", "r") or die("Unable to open file!");
+            $myfile = fopen(__DIR__ . "/../vues/css/global.css", "r") or die("Erreur interne du serveur");
             $reader = fread($myfile,filesize(__DIR__ . "/../vues/css/global.css"));
             fclose($myfile);
             return $reader;
+        } catch (Throwable $e) {
+            throw new Exception("Erreur interne du serveur");
+        }
+    }
+
+    public static function setCss($css) : void
+    {
+        try {
+            file_put_contents(__DIR__ . "/../vues/css/global.css", $css);
         } catch (Throwable $e) {
             throw new Exception("Erreur interne du serveur");
         }
