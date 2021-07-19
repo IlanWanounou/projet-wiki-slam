@@ -56,21 +56,53 @@ $(document).ready(function () {
     $('.form-group.footer input').keyup(function (e) {
         verifFooter();
     });
-    document.getElementById('footer-form').addEventListener('reset', reset);
+    document.getElementById('footer-form').addEventListener('reset', resetFooter);
 
     function verifFooter() {
         if ($('#footer-content-1').val() == initFooter1 && $('#footer-content-2').val() == initFooter2) {
-            reset()
+            resetFooter();
         } else {
             $('#send-footer-content').removeAttr('disabled');
             $('#reset-footer-content').removeAttr('disabled');
         }
     }
     
+    var editor = CodeMirror.fromTextArea(document.getElementById("myTextArea"), {
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        mode: 'css',
+        theme: 'ayu-dark',
+        indentUnit: 4
+    });
+    $('body').on('DOMSubtreeModified', '.CodeMirror-code', function() {
+        verifCss();
+    });
+
+    const initCodeCss = $('.CodeMirror-code').html();
+
+    function verifCss() {
+        if ($('.CodeMirror-code').html() == initCodeCss) {
+            resetCss();
+        } else {
+            $('#send-css-content').removeAttr('disabled');
+            $('#reset-css-content').removeAttr('disabled');
+        }
+    }
+
+    $('#send-css-content').click(function() {
+        alert(editor.getValue());
+    })
+    
+    
 });
-function reset() {
+function resetFooter() {
     $('#send-footer-content').attr('disabled', '');
     $('#reset-footer-content').attr('disabled', '');
+}
+function resetCss() {
+    $('#send-css-content').attr('disabled', '');
+    $('#reset-css-content').attr('disabled', '');
 }
 
 

@@ -41,5 +41,6 @@ if (isset($_SESSION['token'], $_GET['t']) && $_SESSION['token'] == $_GET['t']) {
     Services\Admin\Manager\ConfigManager::setFooter($bdd, $footer);
     header('Location: #');
 }
+$contentCss    = Services\Admin\Manager\ConfigManager::getCss($bdd);
 $contentFooter = Services\Admin\Manager\ConfigManager::getFooter($bdd);
 require_once(__DIR__ . '/../../../vues/admin_vues/v_admin_skeleton.php');
