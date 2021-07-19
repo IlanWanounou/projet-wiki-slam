@@ -8,6 +8,7 @@ require_once(__DIR__ . '/../../../controleurs/editArticle.php');
 require_once(__DIR__ . '/../../../modele/navbaritems.php');
 require_once(__DIR__ . '/../../../controleurs/adminManager.php');
 require_once(__DIR__ . '/../../../controleurs/articleManager.php');
+require_once(__DIR__ . '/../../../controleurs/articleCarousel.php');
 
 use Services\Admin\Manager\AdminManager as AdminManager;
 
