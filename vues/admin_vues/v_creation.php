@@ -42,7 +42,7 @@
                 <label for="form-image">Image</label>
                 <input  type="file" accept="image/*" name="image" id="form-image" class="form-control"required>
             </div>
-            <input type="hidden" id="content" name="contenue">
+            <input class="form-group" type="hidden" id="content" name="contenue">
             <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>
 
         </form>

@@ -33,13 +33,14 @@
             <textarea  name="intro" placeholder="Intro" v id="form-intro" class="form-control" rows="3" cols="30" required><?= $allContent['phrase_intro']?>
             </textarea>
         </div>
+        <?php if(Article\ArticleCarousel::getStatusCode('/public/images/uploads/' . $allContent['image']) !== 404) {?>
         <img class="col-md-4 p-2 grey" src="/public/images/uploads/<?= $allContent['image'] ?>" >
-
+<?php } ?>
         <div class="form-group">
             <label for="form-image">Changer d'image</label>
             <input  type="file" accept="image/*" name="image" id="form-image" class="form-control">
         </div>
-        <input type="hidden" id="content" name="contenue">
+        <input class="form-group" type="hidden" id="content" name="contenue">
         <button type="submit" class="btn btn-primary btn-lg">Editer</button>
 
     </form>
