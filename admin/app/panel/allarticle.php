@@ -21,6 +21,7 @@ $editArticle = new Article\editArticle($bdd);
 try {
     if(isset($_POST['titre']) &&  isset($_POST['contenue']) && isset($_POST['intro']) && isset($_FILES['image']) && !empty($_POST['titre'] && $_POST['contenue'] &&  $_POST['intro'])  && $_FILES['image']) {
         $editArticle->articleUpdate(($_GET['article']), ($_POST['titre']), ($_POST['contenue']), ($_POST['intro']), ($_FILES['image']));
+        $success = true;
     }
 }catch (Exception $e) {
     echo $e;
