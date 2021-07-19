@@ -41,7 +41,7 @@ class CreationDef
         }
     }
 
-    private function uploadImage($image): bool
+    public static function uploadImage($image): bool
     {
         $target_dir = "../vues/images/uploads/";
         $target_file = $target_dir . basename(($image['name']));
