@@ -1,11 +1,18 @@
 <?php
 
+use Maintenance\Maintenance;
+
 require_once(__DIR__ . '/../../controleurs/bdd.php');
 require_once(__DIR__ . '/../../controleurs/session.php');
+require_once(__DIR__ . '/../../controleurs/maintenance.php');
 
 if (Session\SessionManager::isConnected()) {
     header('Location: /admin/pannel');
     die();
+}
+$maintenance = new Maintenance($bdd);
+if ($maintenance->isMaintenance()) {
+    $isMaintenance = true;
 }
 if (isset($_GET['s']) && isset($_SESSION['token']) && $_SESSION['token'] == $_GET['s']) {
     $logoutBefore = true;
