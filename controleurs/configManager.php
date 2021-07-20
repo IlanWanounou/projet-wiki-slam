@@ -15,6 +15,8 @@ abstract class ConfigManager {
             if (getimagesize(($image["tmp_name"]))) {
                 if (move_uploaded_file(($image["tmp_name"]), $target_file)) {
                     return true;
+                } else {
+                    throw new Exception("Erreur interne du serveur");
                 }
             }
         } catch (Throwable) {

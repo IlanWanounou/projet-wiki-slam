@@ -22,11 +22,15 @@ try {
         $_SESSION['token'] = null;
     } elseif (isset($_FILES['uploadFavicon'])) {
         try {
-            Services\Admin\Manager\ConfigManager::uploadFavicon($_FILES['uploadFavicon']);
-            // Détruit les surcharges serveurs avec le refresh button
-            $token = bin2hex(random_bytes(50));
-            $_SESSION['token'] = $token;
-            header ('Location: ' . '?t=' . $token);
+            if ($_FILES['uploadFavicon']['type'] === 'image/x-icon') {
+                Services\Admin\Manager\ConfigManager::uploadFavicon($_FILES['uploadFavicon']);
+                // Détruit les surcharges serveurs avec le refresh button
+                $token = bin2hex(random_bytes(50));
+                $_SESSION['token'] = $token;
+                header ('Location: ' . '?t=' . $token);
+            } else {
+                throw new Exception("Ce type d'image n'est pas pris en charge.");
+            }
         } catch (Exception $ex) {
             $error = $ex->getMessage();
         }
