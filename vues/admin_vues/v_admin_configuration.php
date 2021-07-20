@@ -22,12 +22,14 @@
             ?>
             <div class="alert alert-success" role="alert">
                 <?= $success ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
             </div>
             <?php
         } else if (isset($error)) {
             ?>
             <div class="alert alert-danger" role="alert">
                 <?= $error ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
             </div>
             <?php
         }
@@ -82,7 +84,7 @@
     <div class="form-group css">
         <form method="post" id="footer-css">
             <div class="form-group">
-                <label for="form-footer"><span class="badge badge-primary p-1 rounded-circle"><i class="fas fa-copyright align-middle"></i></span> <b>CSS</b></label>
+                <label for="form-footer"><span class="badge badge-primary p-1 rounded-circle"><i class="fas fa-file-code align-middle"></i></span> <b>CSS</b></label>
                 <small class="form-text text-muted mb-2">Personnaliser la feuille de style du site (disponible sur toutes les pages)</small>
                 <textarea id="myTextArea" class="form-control"><?= $contentCss ?></textarea>
             </div>

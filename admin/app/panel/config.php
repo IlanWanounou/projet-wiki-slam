@@ -62,10 +62,12 @@ try {
             // message recherché par post Javascript, on retourne le message
             $createMessage = '<div class="alert alert-success" role="alert">';
             $createMessage .= 'Les modifications ont bien été effectuées';
+            $createMessage .= '<button type="button" class="close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>';
             $createMessage .= '</div>';
         } catch (Exception $ex) {
             $createMessage = '<div class="alert alert-danger" role="alert">';
             $createMessage .= '<i class="fas fa-times"></i> ' . $ex->getMessage();
+            $createMessage .= '<button type="button" class="close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>';
             $createMessage .= '</div>';
         }
         echo $createMessage;
