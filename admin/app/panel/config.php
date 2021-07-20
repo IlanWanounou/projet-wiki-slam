@@ -42,11 +42,20 @@ try {
         }
         sleep(1);
     } elseif (isset($_POST['footer-content-1'], $_POST['footer-content-2'])) {
-        $footer = array($_POST['footer-content-1'], $_POST['footer-content-2']);
-        Services\Admin\Manager\ConfigManager::setFooter($bdd, $footer);
-        $token = bin2hex(random_bytes(50));
-        $_SESSION['token'] = $token;
-        header ('Location: ' . '?t=' . $token);
+        try {
+            $footer = array($_POST['footer-content-1'], $_POST['footer-content-2']);
+            Services\Admin\Manager\ConfigManager::setFooter($bdd, $footer);
+            $token = bin2hex(random_bytes(50));
+            $_SESSION['token'] = $token;
+            header ('Location: ' . '?t=' . $token);
+        } catch (Exception $ex) {
+            if ($ex->getCode() == '22001') {
+                $error = 'La valeur soumise est trop longue (> 254 caractères)';
+            } else {
+                $error = 'Erreur interne du serveur';
+            }
+        }
+        
     } elseif (isset($_POST['css'])) {
         try {
             $contentCss = Services\Admin\Manager\ConfigManager::setCss($_POST['css']);

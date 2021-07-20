@@ -1,12 +1,14 @@
 <?php
 try
 {
-	$bdd = new PDO('mysql:host=localhost;dbname=wikislam;charset=utf8', 'admin', 'OszX^hr~m;|TD;zYbs');
+    require_once(__DIR__ . '/../modele/config.php');
+
+	$bdd = new PDO(sprintf(MYSQL_TEMPLATE, MYSQL_HOST, MYSQL_DBNAME, MYSQL_CHARSET, MYSQL_USERNAME, MYSQL_PASSWORD), MYSQL_USERNAME, MYSQL_PASSWORD);
 }
 catch (Exception $e)
 {
-    die('Erreur : ' . $e->getMessage());
-    echo "erreur !";
+    http_response_code(500);
+    die("[#{$e->getCode()}] Erreur interne au serveur. Merci de vouloir patienter quelque instant");
 }
 ?>
 
