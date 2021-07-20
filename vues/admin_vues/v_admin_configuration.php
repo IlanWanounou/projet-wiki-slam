@@ -16,15 +16,23 @@
     </style>
 </noscript>
 <div id="content">
-    <?php
-    if (isset($success)) { 
-        ?>
-        <div class="alert alert-success" role="alert">
-            <?= $success ?>
-        </div>
+    <div id="message">
         <?php
-    }
-    ?>
+        if (isset($success)) { 
+            ?>
+            <div class="alert alert-success" role="alert">
+                <?= $success ?>
+            </div>
+            <?php
+        } else if (isset($error)) {
+            ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $error ?>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
     <div class="form-group favicon">
         <label for="form-favicon"><span class="badge badge-primary rounded-circle"><i class="fas fa-wrench align-middle"></i></span> <b>Favicon</b></label>
         <small class="form-text text-muted mb-2">L'image qui représente le site, affiché à gauche du nom du site.</small>

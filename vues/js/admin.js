@@ -31,7 +31,12 @@ $(document).ready(function () {
         }
     });
 
+    var success = '<div class="alert alert-success" role="alert">';
+    success     += 'Les modifications ont bien été effectuées';
+    success     += '</div>';
+
     function call(bgColor) {
+        $('#message').html('').hide();
         var btn = '<button class="btn btn-' + bgColor + ' btn-sm" type="button" disabled>';
         btn    += '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
         btn    += ' Chargement...';
@@ -42,12 +47,19 @@ $(document).ready(function () {
         {
             maintenance: 'toggle'
         }, function(data) {
-            load(), 2000;
+            loadMaintenance();
+            $('#message').html(success).hide().show(100);
         });
     }
 
-    function load() {
+    
+
+    function loadMaintenance() {
         $('.form-group.maintenance').load(document.URL + ' .form-group.maintenance > div');
+    }
+
+    function loadMessage() {
+        $('#message').load(document.URL + ' #message .alert');
     }
 
     const initFooter1 = $('#footer-content-1').val();
@@ -81,7 +93,7 @@ $(document).ready(function () {
         verifCss();
     });
 
-    const initCodeCss = $('.CodeMirror-code').html();
+    var initCodeCss = $('.CodeMirror-code').html();
 
     function verifCss() {
         if ($('.CodeMirror-code').html() == initCodeCss) {
@@ -97,7 +109,16 @@ $(document).ready(function () {
         {
             css: editor.getValue()
         }, function(data) {
-            document.location.reload();
+            if (data) {
+                console.log(data);
+                $('#message').html(data).hide().show(500);
+                initCodeCss = $('.CodeMirror-code').html()
+                $('html, body').delay( 50 ).animate({
+                    scrollTop: $("#top").offset().top
+                }, 800, function(){
+                    window.location.hash = '';
+                });
+            }
         });
     });
 

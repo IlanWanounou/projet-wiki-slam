@@ -4,6 +4,7 @@ namespace Services\Admin\Manager;
 
 use Exception;
 use Throwable;
+use mysqli_sql_exception;
 
 abstract class ConfigManager {
 
@@ -15,10 +16,12 @@ abstract class ConfigManager {
             if (getimagesize(($image["tmp_name"]))) {
                 if (move_uploaded_file(($image["tmp_name"]), $target_file)) {
                     return true;
+                } else {
+                    throw new Exception("Erreur interne du serveur");
                 }
             }
         } catch (Throwable) {
-            throw new Exception('error');
+            throw new Exception('Impossible de transférer ce fichier');
         }
         
     }
@@ -29,8 +32,8 @@ abstract class ConfigManager {
             $requete = $bdd->query('SELECT `footerTop`, `footerBottom` FROM config');
             $footers = $requete->fetch();
             return $footers;
-        } catch (Throwable $e) {
-            throw new Exception("Erreur interne du serveur");
+        } catch (mysqli_sql_exception $e) {
+            throw $e;
         }
     }
 
@@ -42,20 +45,32 @@ abstract class ConfigManager {
                 $footer[0],
                 $footer[1]
             ));
-        } catch (Throwable $e) {
-            throw new Exception("Erreur interne du serveur");
+        } catch (mysqli_sql_exception $e) {
+            throw $e;
         }
     }
 
     public static function getCss() : string
     {
         try {
-            $myfile = fopen(__DIR__ . "/../vues/css/global.css", "r") or die("Erreur interne du serveur");
-            $reader = fread($myfile,filesize(__DIR__ . "/../vues/css/global.css"));
-            fclose($myfile);
-            return $reader;
+            $path = __DIR__ . "/../vues/css/global.css";
+            if (file_exists($path)) {
+                $myfile = fopen($path, "r");
+                if ($myfile) {
+                    $reader = fread($myfile,filesize($path));
+                    fclose($myfile);
+                    return $reader;
+                } else {
+                    throw new Exception("Erreur interne du serveur");
+                }
+            } else {
+                $page = '/* Feuille de style globale */';
+                ConfigManager::setCss($page);
+                return ConfigManager::getCss();
+            }
+            
         } catch (Throwable $e) {
-            throw new Exception("Erreur interne du serveur");
+            throw new Exception($e->getMessage());
         }
     }
 
