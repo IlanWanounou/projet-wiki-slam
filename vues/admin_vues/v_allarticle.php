@@ -21,18 +21,19 @@ $titreArticle = $editArticle->selectArticle($bdd);
         </tr>
         </thead>
         <tbody>
+        <tr>
         <?php
         foreach ($titreArticle as $titre) {
         ?>
-        <tr>
+
             <th><?= $titre['article_id'] ?></th>
             <td><?= htmlspecialchars($titre['titre']) ?></td>
             <td><a href="/admin/articles/edit/<?= $titre['article_id'] ?> ">Editer</a></td>
             <?php if (!$titre['deleted_at']) { ?>
-                <td><a href="?sommeil=<?= $titre['article_id'] ?>"  type="button">Mettre hors ligne</a></td>
+                <td><a href="?sommeil=<?= $titre['article_id'] ?>"  class="btn btn-primary btn-sm" type="button">Mettre hors ligne</a></td>
                 <td><span class="badge badge-success ">En ligne</span></td>
             <?php } else { ?>
-                <td><a href="?sommeil=<?= $titre['article_id'] ?>"  type="button">Mettre en ligne</a></td>
+                <td><a href="?sommeil=<?= $titre['article_id'] ?>"  class="btn btn-primary btn-sm" type="button">Mettre en ligne</a></td>
 
             <td> <span class="badge badge-danger">Hors ligne</span></td>
             <?php }?>
