@@ -40,16 +40,40 @@ try {
     } elseif (isset($_POST['footer-content-1'], $_POST['footer-content-2'])) {
         $footer = array($_POST['footer-content-1'], $_POST['footer-content-2']);
         Services\Admin\Manager\ConfigManager::setFooter($bdd, $footer);
-        header('Location: #');
+        $token = bin2hex(random_bytes(50));
+        $_SESSION['token'] = $token;
+        header ('Location: ' . '?t=' . $token);
     } elseif (isset($_POST['css'])) {
-        $contentCss = Services\Admin\Manager\ConfigManager::setCss($_POST['css']);
-        $success = 'La page CSS a été mis à jour';
+        try {
+            $contentCss = Services\Admin\Manager\ConfigManager::setCss($_POST['css']);
+            // message recherché par post Javascript, on retourne le message
+            $createMessage = '<div class="alert alert-success" role="alert">';
+            $createMessage .= 'Les modifications ont bien été effectuées';
+            $createMessage .= '</div>';
+        } catch (Exception $ex) {
+            $createMessage = '<div class="alert alert-danger" role="alert">';
+            $createMessage .= '<i class="fas fa-times"></i> ' . $ex->getMessage();
+            $createMessage .= '</div>';
+        }
+        echo $createMessage;
+        die();
     }
-    $contentCss    = Services\Admin\Manager\ConfigManager::getCss($bdd);
-    $contentFooter = Services\Admin\Manager\ConfigManager::getFooter($bdd);
+    $contentCss = 'ERREUR: Fichier manquant';
+    $contentFooter = array();
+    try {
+        $contentCss    = Services\Admin\Manager\ConfigManager::getCss($bdd);
+    } catch (Exception $ex) {
+        
+        $error = $ex->getMessage();
+    }
+    try {
+        $contentFooter = Services\Admin\Manager\ConfigManager::getFooter($bdd);
+    } catch (Exception $ex) {
+        $error = $ex->getMessage();
+    }
+    
 } catch (Exception $ex) {
     $error = $ex->getMessage();
 }
-
 
 require_once(__DIR__ . '/../../../vues/admin_vues/v_admin_skeleton.php');

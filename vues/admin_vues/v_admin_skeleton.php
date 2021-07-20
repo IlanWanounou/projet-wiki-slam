@@ -10,7 +10,7 @@ $meta['js']    = array_reverse($meta['js']);
 require_once(__DIR__ . '/../../modele/navbaritems.php');
 require_once(__DIR__ . '/../v_header.php');
 ?>
-<body>
+<body id="top">
     <?php
         require_once(__DIR__ . '/v_admin_navbar.php');
     ?>

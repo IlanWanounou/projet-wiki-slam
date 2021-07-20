@@ -50,12 +50,24 @@ abstract class ConfigManager {
     public static function getCss() : string
     {
         try {
-            $myfile = fopen(__DIR__ . "/../vues/css/global.css", "r") or die("Erreur interne du serveur");
-            $reader = fread($myfile,filesize(__DIR__ . "/../vues/css/global.css"));
-            fclose($myfile);
-            return $reader;
+            $path = __DIR__ . "/../vues/css/global.css";
+            if (file_exists($path)) {
+                $myfile = fopen($path, "r");
+                if ($myfile) {
+                    $reader = fread($myfile,filesize($path));
+                    fclose($myfile);
+                    return $reader;
+                } else {
+                    throw new Exception("Erreur interne du serveur");
+                }
+            } else {
+                $page = '/* Feuille de style globale */';
+                ConfigManager::setCss($page);
+                return ConfigManager::getCss();
+            }
+            
         } catch (Throwable $e) {
-            throw new Exception("Erreur interne du serveur");
+            throw new Exception($e->getMessage());
         }
     }
 
