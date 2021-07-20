@@ -23,7 +23,7 @@ switch ($requestedPage) {
         require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/creation.php'));
         break;
     case 'articles/edit':
-        require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/allarticle.php'));
+        require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/article.php'));
         break;
     default:
         require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/panel.php'));
