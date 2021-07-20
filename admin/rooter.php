@@ -20,10 +20,10 @@ switch ($requestedPage) {
         require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/config.php'));
         break;
     case 'articles/add':
-        require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/creation.php'));
+        require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/articleCreate.php'));
         break;
     case 'articles/edit':
-        require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/article.php'));
+        require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/articleEdit.php'));
         break;
     default:
         require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/panel.php'));
