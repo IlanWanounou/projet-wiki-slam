@@ -8,9 +8,10 @@ $titreArticle = $editArticle->selectArticle($bdd);
 
 ?>
 
-<div class="table-responsive">
+
 
     <table class="table table-hover">
+        <h2 class="text-center pb-2">Gestion article</h2>
         <thead>
         <tr>
             <th scope="col">ID</th>
@@ -42,5 +43,4 @@ $titreArticle = $editArticle->selectArticle($bdd);
 
         </tbody>
     </table>
-</div>
 
