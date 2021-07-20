@@ -6,7 +6,7 @@
 <div class='container'>
 
 
-    <h1 class="text-center">Edition de l'article <?= $_GET['article']?> - <?= $allContent['titre']?> </h1>
+    <h1 class="text-center">Edition de l'article <?= $_GET['article']?> - <?= htmlspecialchars($allContent['titre'])?> </h1>
     <?php
     if(!$allContent['deleted_at']) {
         ?>
@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
             <label for="form-intro">Phrase d'intro</label>
-            <textarea  name="intro" placeholder="Intro" v id="form-intro" class="form-control" rows="3" cols="30" required><?= $allContent['phrase_intro']?>
+            <textarea  name="intro" placeholder="Intro" id="form-intro" class="form-control" rows="3" cols="30" required><?= $allContent['phrase_intro']?>
             </textarea>
         </div>
         <?php if(Article\ArticleCarousel::getStatusCode('/public/images/uploads/' . $allContent['image']) !== 404) {?>
