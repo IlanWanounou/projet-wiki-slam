@@ -4,6 +4,7 @@ namespace Services\Admin\Manager;
 
 use Exception;
 use Throwable;
+use mysqli_sql_exception;
 
 abstract class ConfigManager {
 
@@ -20,7 +21,7 @@ abstract class ConfigManager {
                 }
             }
         } catch (Throwable) {
-            throw new Exception('error');
+            throw new Exception('Impossible de transférer ce fichier');
         }
         
     }
@@ -31,8 +32,8 @@ abstract class ConfigManager {
             $requete = $bdd->query('SELECT `footerTop`, `footerBottom` FROM config');
             $footers = $requete->fetch();
             return $footers;
-        } catch (Throwable $e) {
-            throw new Exception("Erreur interne du serveur");
+        } catch (mysqli_sql_exception $e) {
+            throw $e;
         }
     }
 
@@ -44,8 +45,8 @@ abstract class ConfigManager {
                 $footer[0],
                 $footer[1]
             ));
-        } catch (Throwable $e) {
-            throw new Exception("Erreur interne du serveur");
+        } catch (mysqli_sql_exception $e) {
+            throw $e;
         }
     }
 
