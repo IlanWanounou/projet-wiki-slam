@@ -63,7 +63,7 @@ class editArticle
         }
     }
 
-    public function isOffline($id)
+    private function isOffline($id)
     {
         $bdd = $this->bdd;
         try {
