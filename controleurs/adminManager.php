@@ -12,7 +12,7 @@ abstract class AdminManager {
             // On ne prend que les 2 premiers résultats
             unset ($repertories[2]);
         }
-        return implode("/", $repertories);
+        return preg_replace('/\?(.*)/', '', implode("/", $repertories));
     }
     public static function getCurrentPageConfig($pages) {
         foreach ($pages as $item) {
