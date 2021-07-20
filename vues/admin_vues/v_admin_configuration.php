@@ -22,12 +22,14 @@
             ?>
             <div class="alert alert-success" role="alert">
                 <?= $success ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
             </div>
             <?php
         } else if (isset($error)) {
             ?>
             <div class="alert alert-danger" role="alert">
                 <?= $error ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
             </div>
             <?php
         }

@@ -33,6 +33,7 @@ $(document).ready(function () {
 
     var success = '<div class="alert alert-success" role="alert">';
     success     += 'Les modifications ont bien été effectuées';
+    success     += '<button type="button" class="close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>';
     success     += '</div>';
 
     function call(bgColor) {
