@@ -19,3 +19,7 @@
 .white-space-pre {
     white-space: pre;
 }
+.item-scale-transparent {
+    transform: scale(2);
+    color: #ffffff38;;
+}
