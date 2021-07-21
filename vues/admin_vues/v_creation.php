@@ -10,19 +10,10 @@
     <h1 class="text-center">Ajout d'un article</h1>
 
 
-        <form method="post" id="creationForm" enctype="multipart/form-data" class="justify-content-center">
-            <?php if (isset($success) && $success) {
-                ?>
-                <div class="alert alert-success mt-4" role="alert">
-                    Article mis en ligne.
-                </div>
-            <?php } else {
-                ?>
-                <div class="alert alert-danger mt-4" role="alert">
-                    Echec l'article n'est pas en ligne.
-                </div>
-                <?php
-            } ?>
+        <form method="post" id="creationForm" enctype="multipart/form-data">
+
+            <?php if (isset($result)) {
+            echo ($result); } ?>
             <div class="form-group">
                 <label for="form-titre">Titre</label>
 

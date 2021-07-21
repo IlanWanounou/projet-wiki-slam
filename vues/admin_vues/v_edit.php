@@ -15,20 +15,9 @@
         <h3 class="text-center">L'article est actuellement hors ligne</h3>
   <?php  }?>
 
-    <?php if (isset($success) && $success) {
-        ?>
-        <div class="alert alert-success mt-4" role="alert">
-            Article éditer.
-        </div>
-    <?php } else {
-        ?>
-        <div class="alert alert-danger mt-4" role="alert">
-            Echec.
-        </div>
-        <?php
-    } ?>
     <form method="post" id="creationForm" enctype="multipart/form-data" class="justify-content-center">
-
+        <?php if (isset($result)) {
+            echo ($result); } ?>
         <div class="form-group">
             <label for="form-titre">Titre</label>
 
