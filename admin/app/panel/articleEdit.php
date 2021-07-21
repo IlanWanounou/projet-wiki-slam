@@ -49,11 +49,11 @@ if (isset($_GET['article']) && $articleManager->articleExists($_GET['article']))
     $success = true;
     header("refresh:2;url=/admin/articles/edit");
     if ($success) {
-        $result = '<div class="text-center alert alert-success mt-4" role="alert">
-                    L\'article a été modifié. </div>';
+        $result = '<div class="text-center alert alert-danger mt-4" role="alert">
+                    L\'article a été supprimer. </div>';
     } else {
-        $result = '<div class="alert alert-danger mt-4" role="alert">
-                 Échec l\'article n\'a pas pu être modifié. </div>';
+        $result = '<div class="text-center alert alert-danger mt-4" role="alert">
+                 Échec l\'article n\'a pas pu être supprimer. </div>';
     }
 
 
