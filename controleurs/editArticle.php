@@ -75,8 +75,6 @@ class editArticle
         } catch (Throwable $e) {
             throw  new Exception($e);
         }
-
-
     }
 
     public function articleUpdate($id, $titre, $contenue, $intro, $image) : bool
@@ -117,6 +115,14 @@ class editArticle
             throw new Exception($e);
         }
         return false;
+    }
+
+    public function articleDelete($id) {
+        $requete = $this->bdd->prepare('DELETE FROM article WHERE article_id = ?');
+        $requete->execute(array(
+           $id
+        ));
+        $requete->closeCursor();
     }
 }
 

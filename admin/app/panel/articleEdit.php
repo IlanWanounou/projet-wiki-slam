@@ -41,16 +41,27 @@ if (isset($_GET['article']) && $articleManager->articleExists($_GET['article']))
     $allContent = $editArticle->selectAllById($_GET['article']);
     require_once(__DIR__ . '/../../../vues/admin_vues/v_admin_skeleton.php');
 
-} else {
-    if(isset($_GET['sommeil'])) {
+} else if(isset($_GET['sommeil'])) {
     $editArticle->OnOfflineArticle($_GET['sommeil']);
-        header('Location: /admin/articles/edit');
-
+    header('Location: /admin/articles/edit');
+} else if(isset($_GET['suppression'])) {
+    $editArticle->articleDelete($_GET['suppression']);
+    $success = true;
+    header("refresh:2;url=/admin/articles/edit");
+    if ($success) {
+        $result = '<div class="alert alert-success mt-4" role="alert">
+                    L\'article a été modifié. </div>';
+    } else {
+        $result = '<div class="alert alert-danger mt-4" role="alert">
+                 Échec l\'article n\'a pas pu être modifié. </div>';
     }
+
+
+
+
+
+}
 
     $titreArticle = $editArticle->selectArticle($bdd);
     $loadContentName = 'v_allarticle.php';
     require_once(__DIR__ . '/../../../vues/admin_vues/v_admin_skeleton.php');
-
-
-}
