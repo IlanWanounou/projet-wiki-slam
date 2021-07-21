@@ -1,4 +1,4 @@
-<h2>Bienvenue, <?= $username ?></h2>
+<h2 class="font-family-lato">🌴 Bienvenue, <b><?= ucfirst($username) ?></b></h2>
 <p>Ce n'est pas vous ? <a href="">Changez de compte</a></p>
 <div class="row">
     <?php
@@ -16,7 +16,7 @@
                         <p class="card-text"><?= $item['desc'] ?></p>
                     </div>
                     <div class="card-footer">
-                        <a href="/" type="button" class="btn btn-primary btn-sm btn-block"><i class="fas fa-search"></i> Accéder à la page</a>
+                        <a href="<?= $item['href'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i class="fas fa-search"></i> Accéder à la page</a>
                     </div>
                 </div>
             </div>
