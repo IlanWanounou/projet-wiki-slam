@@ -1,5 +1,5 @@
 <h2 class="font-family-lato">🌴 Bienvenue, <b><?= ucfirst($username) ?></b></h2>
-<p>Ce n'est pas vous ? <a href="">Changez de compte</a></p>
+<p>Ce n'est pas vous ? <a href="/admin/logout">Changez de compte</a></p>
 <div class="row">
     <?php
     for ($i=1; $i < count($admin_pages); $i++) { 
