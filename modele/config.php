@@ -9,3 +9,5 @@ define('MYSQL_CHARSET' , 'utf8');
 define('MYSQL_USERNAME', 'admin');
 define('MYSQL_PASSWORD', 'OszX^hr~m;|TD;zYbs');
 
+define('MYSQL_DEV_DBNAME'  , 'pf49xzai_wikislam');
+define('MYSQL_DEV_USERNAME', 'pf49xzai_admin');

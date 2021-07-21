@@ -7,8 +7,12 @@ try
 }
 catch (Exception $e)
 {
-    http_response_code(500);
-    die("[#{$e->getCode()}] Erreur interne au serveur. Merci de vouloir patienter quelque instant");
+    try {
+        $bdd = new PDO(sprintf(MYSQL_TEMPLATE, MYSQL_HOST, MYSQL_DEV_DBNAME, MYSQL_CHARSET, MYSQL_DEV_USERNAME, MYSQL_PASSWORD), MYSQL_DEV_USERNAME, MYSQL_PASSWORD);
+    } catch (Exception $e) {
+        http_response_code(500);
+        die("[#{$e->getCode()}] Erreur interne au serveur. Merci de vouloir patienter quelque instant");
+    }
 }
 ?>
 
