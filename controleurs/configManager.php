@@ -20,7 +20,7 @@ abstract class ConfigManager {
                     throw new Exception("Erreur interne du serveur");
                 }
             }
-        } catch (Throwable) {
+        } catch (Throwable $e) {
             throw new Exception('Impossible de transférer ce fichier');
         }
         
