@@ -17,5 +17,6 @@
         echo "<script type='text/javascript' src='/public/js/$jsUri'></script>";
     }
     ?>
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W4ZQV0GBZR"></script>
+    <script src="/public/js/global.js"></script>
 </head>
