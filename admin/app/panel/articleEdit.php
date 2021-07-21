@@ -44,10 +44,15 @@ if (isset($_GET['article']) && $articleManager->articleExists($_GET['article']))
 } else if(isset($_GET['sommeil'])) {
     $editArticle->OnOfflineArticle($_GET['sommeil']);
     header('Location: /admin/articles/edit');
+    
 } else if(isset($_GET['suppression'])) {
     $editArticle->articleDelete($_GET['suppression']);
+    $token = bin2hex(random_bytes(50));
+    $_SESSION['token'] = $token;
+    header('Location: ' . '?t=' . $token);
+}
+else if (isset($_SESSION['token'], $_GET['t']) && $_SESSION['token'] == $_GET['t']) {
     $success = true;
-    header("refresh:2;url=/admin/articles/edit");
     if ($success) {
         $result = '<div class="text-center alert alert-danger mt-4" role="alert">
                     L\'article a été supprimer. </div>';
@@ -55,10 +60,6 @@ if (isset($_GET['article']) && $articleManager->articleExists($_GET['article']))
         $result = '<div class="text-center alert alert-danger mt-4" role="alert">
                  Échec l\'article n\'a pas pu être supprimer. </div>';
     }
-
-
-
-
 
 }
 
