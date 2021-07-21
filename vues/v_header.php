@@ -17,6 +17,11 @@
         echo "<script type='text/javascript' src='/public/js/$jsUri'></script>";
     }
     ?>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W4ZQV0GBZR"></script>
-    <script src="/public/js/global.js"></script>
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W4ZQV0GBZR"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    gtag('config', 'G-W4ZQV0GBZR');
+</script>
