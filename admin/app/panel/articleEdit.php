@@ -22,8 +22,14 @@ $editArticle = new Article\editArticle($bdd);
 
 try {
     if(isset($_POST['titre']) &&  isset($_POST['contenue']) && isset($_POST['intro']) && isset($_FILES['image']) && !empty($_POST['titre'] && $_POST['contenue'] &&  $_POST['intro'])  && $_FILES['image']) {
-        $editArticle->articleUpdate(($_GET['article']), ($_POST['titre']), ($_POST['contenue']), ($_POST['intro']), ($_FILES['image']));
-        $success = true;
+        $success = $editArticle->articleUpdate(($_GET['article']), ($_POST['titre']), ($_POST['contenue']), ($_POST['intro']), ($_FILES['image']));
+        if ($success) {
+            $result = '<div class="alert alert-success mt-4" role="alert">
+                    L\'article a été modifié. </div>';
+        } else {
+            $result = '<div class="alert alert-danger mt-4" role="alert">
+                 Échec l\'article n\'a pas pu être modifié. </div>';
+        }
     }
 }catch (Exception $e) {
     echo $e;

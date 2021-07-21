@@ -79,7 +79,7 @@ class editArticle
 
     }
 
-    public function articleUpdate($id, $titre, $contenue, $intro, $image)
+    public function articleUpdate($id, $titre, $contenue, $intro, $image) : bool
     {
 
         try {
@@ -95,6 +95,7 @@ class editArticle
                     'intro' => $intro
                 ));
                 $requete->closeCursor();
+                return true;
 
             } else {
                 $isUpload = \Creation\CreationDef::uploadImage($image);
@@ -108,11 +109,14 @@ class editArticle
                         'image' => $image['name']
                     ));
                     $requete->closeCursor();
+                    return true;
                 }
+
             }
         } catch (\Throwable $e) {
             throw new Exception($e);
         }
+        return false;
     }
 }
 
