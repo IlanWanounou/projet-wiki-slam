@@ -8,7 +8,7 @@ $meta['css'] = ['bootstrap.min.css', 'fontawesome.all.min.css', 'error.css'];
 $meta['js'] = ['jquery-3.6.0.min.js', 'bootstrap.min.js'];
 require_once(__DIR__ . '/../../vues/v_header.php');
 ?>
-<div>
+<body>
 <div class='container text-center'>
     <header>
         <?php
@@ -22,12 +22,13 @@ require_once(__DIR__ . '/../../vues/v_header.php');
         require_once(__DIR__ . '/../../vues/v_error.php');
         ?>
     </div>
-    <div class="footer-403">
-    <?php
-    require_once(__DIR__ . '/../../vues/v_footer.php');
-    ?>
-</div>
-</div>
 
+    <div class="footer-403">
+        <?php
+        require_once(__DIR__ . '/../../vues/v_footer.php');
+        ?>
+    </div>
+</div>
+</body>
 
 
