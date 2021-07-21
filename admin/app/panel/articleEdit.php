@@ -49,7 +49,7 @@ if (isset($_GET['article']) && $articleManager->articleExists($_GET['article']))
     $success = true;
     header("refresh:2;url=/admin/articles/edit");
     if ($success) {
-        $result = '<div class="alert alert-success mt-4" role="alert">
+        $result = '<div class="text-center alert alert-success mt-4" role="alert">
                     L\'article a été modifié. </div>';
     } else {
         $result = '<div class="alert alert-danger mt-4" role="alert">
