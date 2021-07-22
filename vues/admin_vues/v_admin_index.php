@@ -1,53 +1,12 @@
-<?php
-
-
-
-$firstDate = date('d/m/Y', strtotime('-14 day'));
-$dateDiff = 14;
-for ($i=0; $i < $dateDiff; $i++) {
-    $dateRemove = -$dateDiff+1+$i;
-
-    $datas[] = $logManager->getVisitorsCount(date('Y-m-d', strtotime("$dateRemove day")));
-    if ($i === $dateDiff-1) {
-        $labels[] = 'Aujourd\'hui';
-    } elseif ($i === $dateDiff-2) {
-        $labels[] = 'Hier';
-    } else {
-        $labels[] = date('d/m/Y', strtotime("$dateRemove day"));
-    }
-}
-?>
 <script>
-$(document).ready(function () {
-    const labels = <?= json_encode($labels, JSON_NUMERIC_CHECK) ?>;
-    const data = {
-        labels: labels,
-        datasets: [{
-        label: 'Nombre de visiteurs',
-        backgroundColor: '#3180b5',
-        borderColor: '#000000',
-        borderWidth: 1,
-        fill: true,
-        data: <?= json_encode($datas, JSON_NUMERIC_CHECK) ?>,
-    }]
-    };
-    const config = {
-        type: 'line',
-        data,
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    };
-    var chart = new Chart(
-        document.getElementById('chart'),
-        config
-    );
-});
-
+    $(document).ready(function () {
+        data['labels'] = <?= json_encode($labels, JSON_NUMERIC_CHECK) ?>;
+        data['datasets'][0]['data'] = <?= json_encode($datas, JSON_NUMERIC_CHECK) ?>;
+        var chart = new Chart(
+            document.getElementById('chart'),
+            config
+        );
+    });
 </script>
 
 <h2 class="font-family-lato">🌴 Bienvenue, <b><?= ucfirst($username) ?></b></h2>
