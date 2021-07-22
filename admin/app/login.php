@@ -1,13 +1,14 @@
 <?php
 
 use Maintenance\Maintenance;
+use Manager\LogManager;
 
 require_once(__DIR__ . '/../../controleurs/bdd.php');
 require_once(__DIR__ . '/../../controleurs/session.php');
 require_once(__DIR__ . '/../../controleurs/maintenance.php');
 
 if (Session\SessionManager::isConnected()) {
-    header('Location: /admin/pannel');
+    header('Location: /admin/panel');
     die();
 }
 $maintenance = new Maintenance($bdd);
@@ -26,7 +27,11 @@ if (isset($_POST['username'], $_POST['password']) && !empty($_POST['username']) 
         if ($session->isUserExist($_POST['username'])) {
             $session->loginToAccount($_POST['username'], $_POST['password'], (isset($_POST['stayConnected']) && $_POST['stayConnected'] === 'on'));
             $success = true;
+            $logManager = new LogManager();
+            $logManager->logLogin(1, $_POST['username']);
         } else {
+            $logManager = new LogManager();
+            $logManager->logLogin(3, $_POST['username']);
             throw new Exception("Le couple nom d'utilisateur / mot-de-passe est incorrecte.");
         }
     } catch (Exception $ex) {
