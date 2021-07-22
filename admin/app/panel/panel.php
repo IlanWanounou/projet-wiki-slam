@@ -2,7 +2,7 @@
 
 $meta['title'] = 'Configuration du site';
 $meta['css']   = ['admin.css'];
-$meta['js']    = ['admin.js', 'chart.js'];
+$meta['js']    = ['chart.js'];
 
 require_once(__DIR__ . '/../../../modele/navbaritems.php');
 require_once(__DIR__ . '/../../../controleurs/adminManager.php');
