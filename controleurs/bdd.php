@@ -1,7 +1,14 @@
 <?php
+
+use Manager\LogManager;
+
 try
 {
+    date_default_timezone_set('Europe/Paris');
     require_once(__DIR__ . '/../modele/config.php');
+    require_once(__DIR__ . '/logManager.php');
+    $logManager = new LogManager();
+    $logManager->logVisitor();
 
 	$bdd = new PDO(sprintf(MYSQL_TEMPLATE, MYSQL_HOST, MYSQL_DBNAME, MYSQL_CHARSET, MYSQL_USERNAME, MYSQL_PASSWORD), MYSQL_USERNAME, MYSQL_PASSWORD);
 }
