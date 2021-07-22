@@ -60,4 +60,31 @@ class LogManager
         $zip->close();
     }
 
+    public function getVisitorsCount($date) {
+
+        $zip = new ZipArchive();
+        $filePath = __DIR__ . "/../logs/$date.zip";
+        if (file_exists($filePath)) {
+            $zip->open($filePath, ZipArchive::CREATE);
+
+            $file = 'visitors.log';
+            $currentContent = $zip->getStream($file);
+
+            $uniquesVisitors = [];
+
+            while (!feof($currentContent)) {
+                $line = fgets($currentContent);
+                $line = explode(" ", $line);
+                $line[1] = str_replace("(", "", $line[1]);
+                $line[1] = str_replace(")", "", $line[1]);
+                $uniquesVisitors[$line[1]] = true;
+            }
+            $zip->close();
+
+            return count($uniquesVisitors);
+        } else {
+            return 0;
+        }
+        
+    }
 }

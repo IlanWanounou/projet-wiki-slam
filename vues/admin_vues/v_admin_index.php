@@ -1,10 +1,13 @@
 <?php
 
+
+
 $firstDate = date('d/m/Y', strtotime('-14 day'));
 $dateDiff = 14;
 for ($i=0; $i < $dateDiff; $i++) {
     $dateRemove = -$dateDiff+1+$i;
-    $datas[] = random_int(0, 30);
+
+    $datas[] = $logManager->getVisitorsCount(date('Y-m-d', strtotime("$dateRemove day")));
     if ($i === $dateDiff-1) {
         $labels[] = 'Aujourd\'hui';
     } elseif ($i === $dateDiff-2) {
