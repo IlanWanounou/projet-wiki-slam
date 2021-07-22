@@ -7,7 +7,7 @@ require_once(__DIR__ . '/controleurs/articleCarousel.php');
 require_once(__DIR__ . '/controleurs/articleManager.php');
 
 
-if (isset($_GET['articleName'], $_GET['articleId']) && !empty($_GET['articleName']) && !empty($_GET['articleId'])) {
+   if (isset($_GET['articleName'], $_GET['articleId']) && !empty($_GET['articleName']) && !empty($_GET['articleId'])) {
     $articleManager = new Article\ArticleManager($bdd);
     if (!$articleManager->articleExists($_GET['articleId'])) {
         http_response_code(404);
@@ -18,9 +18,12 @@ if (isset($_GET['articleName'], $_GET['articleId']) && !empty($_GET['articleName
         $parseArticleId = $_GET['articleId'];
         $vue = 'v_article.php';
     }
-    
-    
-} else {
+    } else if (isset($_GET['q']) && !empty($_GET['q'])){
+       $vue =  'v_recherche.php';
+
+
+   } else {
+
     $meta['title'] = 'Lexique - BTS SIO SLAM';
     $articleCarousel = new Article\ArticleCarousel($bdd);
     $articles = $articleCarousel->getAllArticles();
