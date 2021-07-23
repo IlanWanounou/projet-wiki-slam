@@ -17,7 +17,21 @@ class recherche
     public function rechecher($demmande) {
         $bdd = $this->bdd;
         try {
-            $requete = $bdd->query('SELECT article_id, titre, phrase_intro, image FROM article WHERE titre LIKE "%'.$demmande. '%" ');
+            $requete = "";
+            $mot=addslashes($demmande);
+           $mot = explode(" ", $mot);
+           $i=0;
+           foreach ($mot as $value ) {
+              if ($i == 0) {
+                  $requete .= " WHERE ";
+                   } else {
+                  $requete .= " OR ";
+                   }
+               $requete .= "contenue LIKE '%$value%'";
+                   $i++;
+           }
+            $requete = "SELECT article_id, titre, phrase_intro, image FROM article".$requete;
+            $requete = $bdd->query($requete);
             return $requete->fetchAll();
 
         }catch (Throwable $e) {

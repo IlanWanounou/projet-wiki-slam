@@ -3,15 +3,17 @@ require_once(__DIR__ . '/../controleurs/bdd.php');
 require_once(__DIR__ . '/../controleurs/SearchBar.php');
 
 $recherche = new SearchBar\recherche($bdd);
-if (isset($_GET['q']))
+
     $resulat = $recherche->rechecher($_GET['q']);
 
 if (count($resulat) === 0) {
     ?>
     <div class="text-center"><h2>Aucun résulat</h2></div>
-<?php } else {
+<?php } else if(count($resulat) === 1) {
     ?>
-    <div class="text-center"><h2><?= count($resulat) ?> résulats</h2></div>
+    <div class="text-center"><h2><?= count($resulat) ?> résultat</h2></div>
+<?php } else {?>
+    <div class="text-center"><h2><?= count($resulat) ?> résultats</h2></div>
 <?php } ?>
 
 <div class="card-group">
@@ -19,6 +21,7 @@ if (count($resulat) === 0) {
 <?php
 
 foreach ($resulat as $affiche) {?>
+    <div class="col-md-4">
     <div class="card" style="width: 18rem;">
     <?php if(Article\ArticleCarousel::getStatusCode('/public/images/uploads/' . $affiche['image']) !== 404) { ?>
         <img class="card-img-top" src="/public/images/uploads/<?= $affiche['image'] ?>" alt=Image-<?= $affiche['titre'] ?> >
@@ -32,9 +35,12 @@ foreach ($resulat as $affiche) {?>
             <a href="/article/<?= $affiche['article_id'].'-'.$affiche['titre']?>" class="btn btn-primary">En savoir plus</a>
         </div>
     </div>
+    </div>
 
 
-<?php }
+<?php }?>
+    </div>
+
 
 
 
