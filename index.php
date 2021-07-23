@@ -19,6 +19,7 @@ require_once(__DIR__ . '/controleurs/articleManager.php');
         $vue = 'v_article.php';
     }
     } else if (isset($_GET['q']) && !empty($_GET['q'])){
+       $meta['title'] = 'Recherche - '. $_GET['q'];
        $vue =  'v_recherche.php';
 
 
