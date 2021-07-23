@@ -11,7 +11,7 @@ echo '<h2> La page n\'existe pas ou a été supprimée </h2>';
         <div class="form-group mx-sm-3 mb-2">
             <input type="search" class="form-control" name="q" placeholder="Rechreche" required>
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Rechrecher</button>
+        <button type="submit" class="btn btn-primary mb-2">Rechercher</button>
     </form>
     </div>
 
