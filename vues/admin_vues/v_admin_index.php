@@ -2,10 +2,14 @@
     $(document).ready(function () {
         data['labels'] = <?= json_encode($labels, JSON_NUMERIC_CHECK) ?>;
         data['datasets'][0]['data'] = <?= json_encode($datas, JSON_NUMERIC_CHECK) ?>;
-        var chart = new Chart(
-            document.getElementById('chart'),
-            config
-        );
+        try {
+            var chart = new Chart(
+                document.getElementById('chart'),
+                config
+            );
+        } catch (error) {
+            $('#chart').replaceWith('<div class="alert alert-danger" role="alert">La page ne répond pas</div>');
+        }
     });
 </script>
 
@@ -13,6 +17,13 @@
 <p>Ce n'est pas vous ? <a href="/admin/logout">Changez de compte</a></p>
 <br>
 <h2 class="font-family-lato" id="visitors">Nombre de visiteurs</h2>
+<noscript>
+    <div class="alert alert-danger" role="alert">
+        <i class="fas fa-exclamation-triangle"></i>
+        Cette fonctionnalité nécessite l'activation de JavaScript
+    </div>
+</noscript>
+
 <canvas id="chart" height="135" class="w-100"></canvas>
 <br>
 <h2 class="font-family-lato">Accès rapide</h2>
