@@ -13,7 +13,7 @@
 <p>Ce n'est pas vous ? <a href="/admin/logout">Changez de compte</a></p>
 <br>
 <h2 class="font-family-lato" id="visitors">Nombre de visiteurs</h2>
-<canvas id="chart" height="40"></canvas>
+<canvas id="chart" height="135" class="w-100"></canvas>
 <br>
 <h2 class="font-family-lato">Accès rapide</h2>
 <hr>
