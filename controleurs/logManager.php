@@ -92,11 +92,30 @@ class LogManager
     public function getAllDates() {
         $filePath = __DIR__ . "/../logs";
         $files = scandir($filePath);
-        array_splice($files, 0, 3);
         foreach ($files as $id => $file) {
-            $date = new DateTime(preg_replace('/\.zip/', '', $file));
-            $files[$id] = date_format($date, 'd/m/Y');
+            if (preg_match('/^[0-9]*\-[0-9]{2}\-[0-9]{2}\.zip$/', $file)) {
+                $date = new DateTime(preg_replace('/\.zip/', '', $file));
+                $dates[] = date_format($date, 'd/m/Y');
+            }
         }
-        return $files;
+        if (!isset($dates)) {
+            return null;
+        } else {
+            return $dates;
+        }
+    }
+
+    public function getFilesInZip($zipName) {
+        $zip = new ZipArchive();
+        $filePath = __DIR__ . "/../logs/$zipName";
+
+        if (file_exists($filePath)) {
+            $zip->open($filePath, ZipArchive::CREATE);
+            for ($i = 0; $i < $zip->numFiles; $i++) {
+                $file[] = $zip->getNameIndex($i);
+            }
+            $zip->close();
+            return $file;
+        }
     }
 }
