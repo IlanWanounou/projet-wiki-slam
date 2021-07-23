@@ -3,14 +3,16 @@ require_once(__DIR__ . '/../controleurs/bdd.php');
 require_once(__DIR__ . '/../controleurs/SearchBar.php');
 
 $recherche = new SearchBar\recherche($bdd);
-if (isset($_GET['q']))
+
     $resulat = $recherche->rechecher($_GET['q']);
 
 if (count($resulat) === 0) {
     ?>
     <div class="text-center"><h2>Aucun résulat</h2></div>
-<?php } else {
-    ?>
+<?php } else if(count($resulat) === 1) {
+    ?>  
+    <div class="text-center"><h2><?= count($resulat) ?> résulat</h2></div>
+<?php } else {?>
     <div class="text-center"><h2><?= count($resulat) ?> résulats</h2></div>
 <?php } ?>
 
