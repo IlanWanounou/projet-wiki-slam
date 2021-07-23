@@ -21,6 +21,7 @@ if (count($resulat) === 0) {
 <?php
 
 foreach ($resulat as $affiche) {?>
+    <div class="col-md-4">
     <div class="card" style="width: 18rem;">
     <?php if(Article\ArticleCarousel::getStatusCode('/public/images/uploads/' . $affiche['image']) !== 404) { ?>
         <img class="card-img-top" src="/public/images/uploads/<?= $affiche['image'] ?>" alt=Image-<?= $affiche['titre'] ?> >
@@ -34,9 +35,12 @@ foreach ($resulat as $affiche) {?>
             <a href="/article/<?= $affiche['article_id'].'-'.$affiche['titre']?>" class="btn btn-primary">En savoir plus</a>
         </div>
     </div>
+    </div>
 
 
-<?php }
+<?php }?>
+    </div>
+
 
 
 
