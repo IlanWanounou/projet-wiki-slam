@@ -10,10 +10,10 @@ if (count($resulat) === 0) {
     ?>
     <div class="text-center"><h2>Aucun résulat</h2></div>
 <?php } else if(count($resulat) === 1) {
-    ?>  
-    <div class="text-center"><h2><?= count($resulat) ?> résulat</h2></div>
+    ?>
+    <div class="text-center"><h2><?= count($resulat) ?> résultat</h2></div>
 <?php } else {?>
-    <div class="text-center"><h2><?= count($resulat) ?> résulats</h2></div>
+    <div class="text-center"><h2><?= count($resulat) ?> résultats</h2></div>
 <?php } ?>
 
 <div class="card-group">
