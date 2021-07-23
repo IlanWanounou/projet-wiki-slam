@@ -18,7 +18,8 @@ class recherche
         $bdd = $this->bdd;
         try {
             $requete = "";
-           $mot = explode(" ", $demmande);
+            $mot=addslashes($demmande);
+           $mot = explode(" ", $mot);
            $i=0;
            foreach ($mot as $value ) {
               if ($i == 0) {
