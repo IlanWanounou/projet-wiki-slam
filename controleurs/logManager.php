@@ -3,6 +3,7 @@
 namespace Manager;
 
 use ZipArchive;
+use DateTime;
 
 class LogManager
 {
@@ -86,5 +87,16 @@ class LogManager
             return 0;
         }
         
+    }
+
+    public function getAllDates() {
+        $filePath = __DIR__ . "/../logs";
+        $files = scandir($filePath);
+        array_splice($files, 0, 3);
+        foreach ($files as $id => $file) {
+            $date = new DateTime(preg_replace('/\.zip/', '', $file));
+            $files[$id] = date_format($date, 'd/m/Y');
+        }
+        return $files;
     }
 }
