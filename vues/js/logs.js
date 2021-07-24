@@ -10,17 +10,16 @@ $(document).ready(function () {
             }
         });
     });
-    var editor;
-    
-    editor = CodeMirror.fromTextArea(document.getElementById("logInfo"), {
-        lineNumbers: true,
-        styleActiveLine: true,
-        matchBrackets: true,
-        mode: 'css',
-        theme: 'ayu-dark',
-        indentUnit: 4
-    });
-    $('body').on('DOMSubtreeModified', '.CodeMirror-code', function() {
-        verifCss();
+
+    $('body').on( "click", ".open-file", function () {
+        let val = $(this).attr('openTo');
+        $.post('',
+        {
+            open: val
+        }, function(data) {
+            if (data) {
+                $("#log-content").html(data);
+            }
+        });
     });
 });

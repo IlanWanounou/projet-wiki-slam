@@ -112,10 +112,26 @@ class LogManager
         if (file_exists($filePath)) {
             $zip->open($filePath, ZipArchive::CREATE);
             for ($i = 0; $i < $zip->numFiles; $i++) {
-                $file[] = $zip->getNameIndex($i);
+                $files[] = $zip->getNameIndex($i);
             }
             $zip->close();
-            return $file;
+            return $files;
+        } else {
+            return null;
+        }
+    }
+
+    public function getContent($zipName, $file) {
+        $zip = new ZipArchive();
+        $filePath = __DIR__ . "/../logs/$zipName";
+
+        if (file_exists($filePath)) {
+            $zip->open($filePath, ZipArchive::CREATE);
+            $content = $zip->getFromName($file);
+            $zip->close();
+            return $content;
+        } else {
+            return null;
         }
     }
 }
