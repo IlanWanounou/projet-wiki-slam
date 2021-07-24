@@ -7,6 +7,7 @@
                 styleActiveLine: true,
                 matchBrackets: true,
                 theme: 'ayu-dark',
+                readOnly: true
             });
             editor.setSize(null,510);
         }
