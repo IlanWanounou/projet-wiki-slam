@@ -13,6 +13,8 @@ require_once(__DIR__ . '/../../controleurs/utilities.php');
 
 <h2>Journalisation</h2>
 
+<div class="alerts"></div>
+
 <noscript>
     <div class="alert alert-danger" role="alert">
         <i class="fas fa-exclamation-triangle"></i>
@@ -27,30 +29,32 @@ require_once(__DIR__ . '/../../controleurs/utilities.php');
 <div id="content">
     <label for="selectLog">Séléction d'une date</label>
     <div class="form-group w-50">
-        <input type="text" class="form-control" placeholder="Rechercher une date (ex: 22/07/2021)" id="search" name="search">
+        <input type="text" class="form-control" placeholder="Rechercher une date (ex: 22/07/2021)" id="search" name="__<?= bin2hex(random_bytes(20)); ?>">
     </div>
-    <select class="form-control w-50" id="selectLog">
-        <option value="">Choisir parmis la liste...</option>
-        <?php
-        $listMonths = [];
-        foreach ($dates as $date) {
-            $split = explode('/', $date);
-            if (isset($split[1], $split[2])) {
-                if (!in_array($split[1] . '/' . $split[2], $listMonths)) {
-                    $listMonths[] = $split[1] . '/' . $split[2];
-                    ?>
-                    <optgroup label="<?php echo Utilities::idToMonth($split[1]) . ' ' . $split[2] ?>"></optgroup>
-                    <?php
-                }
-            }
-            
-            ?>
-            <option value="<?=$date?>"><?=$date?></option>
+    <div id="select">
+        <select class="form-control w-50" id="selectLog">
+            <option value="">Choisir parmis la liste...</option>
             <?php
-        }
-        ?>
-    </select>
+            $listMonths = [];
+            foreach ($dates as $date) {
+                $split = explode('/', $date);
+                if (isset($split[1], $split[2])) {
+                    if (!in_array($split[1] . '/' . $split[2], $listMonths)) {
+                        $listMonths[] = $split[1] . '/' . $split[2];
+                        ?>
+                        <optgroup label="<?php echo Utilities::idToMonth($split[1]) . ' ' . $split[2] ?>"></optgroup>
+                        <?php
+                    }
+                }
+                
+                ?>
+                <option value="<?=$date?>"><?=$date?></option>
+                <?php
+            }
+            ?>
+        </select>
+    </div>
     <div id="logs"></div>
-    <div id="log-content" class="mt-4"></div>
+    <div id="log-content"></div>
 </div>
 

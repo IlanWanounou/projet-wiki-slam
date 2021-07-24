@@ -1,4 +1,4 @@
-<div class="col-auto">
+<div class="col-auto mb-4">
     <div class="card text-center bg-light">
         <h1 class="bg-dark">
         <?php

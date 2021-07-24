@@ -21,7 +21,7 @@ if (isset($_POST['log'])) {
     }
     die();
 } else if (isset($_POST['open'])) {
-    if (preg_match('/^[0-9]*\-[0-9]{2}\-[0-9]{2}\/[a-zA-Z0-9]*\.[a-z]{1,4}$/', $_POST['open'])) {
+    if (preg_match('/^[0-9]*\-[0-9]{2}\-[0-9]{2}\/[a-zA-Z0-9_]*\.[a-z]{1,4}$/', $_POST['open'])) {
         $logManager = new LogManager();
         $file = explode('/', $_POST['open']);
         $content = $logManager->getContent($file[0] . '.zip', $file[1]);
@@ -38,6 +38,37 @@ if (isset($_POST['log'])) {
         include(__DIR__ . '/../vues/admin_vues/v_admin_logs_files.php');
     }
     echo '</div>';
+    die();
+} else if (isset($_POST['delete'])) {
+    if (preg_match('/^[0-9]{2}\/[0-9]{2}\/[0-9]*$/', $_POST['delete'])) {
+        // Suppression d'un dossier
+        try {
+            $dates = explode('/', $_POST['delete']);
+            $date = $dates[2] . '-' . $dates[1] . '-' . $dates[0];
+            $zipName = $date . '.zip';
+            $logManager->deleteZip($zipName);
+            echo '1';
+            die();
+        } catch (Exception $ex) {
+            echo '0';
+        }
+    } else if (preg_match('/^[0-9]*\-[0-9]{2}\-[0-9]{2}\/[a-zA-Z0-9_]*\.[a-z]{1,4}$/', $_POST['delete'])) {
+        // Suppression d'un fichier
+        try {
+            $file = explode('/', $_POST['delete']);
+            if (isset($file[0], $file[1])) {
+                $logManager->deleteFileInZip($file[0], $file[1]);
+                echo '1';
+            } else {
+                throw new Exception('ERREUR!');
+            }
+        } catch (Exception $ex) {
+            echo 'ex:' . $ex->getMessage();
+        }
+        die();
+    } else {
+        echo '0';
+    }
     die();
 }
 ?>
