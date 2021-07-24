@@ -3,6 +3,7 @@
 namespace Manager;
 
 use ZipArchive;
+use DateTime;
 
 class LogManager
 {
@@ -86,5 +87,66 @@ class LogManager
             return 0;
         }
         
+    }
+
+    public function getAllDates() {
+        $filePath = __DIR__ . "/../logs";
+        $files = scandir($filePath);
+        foreach ($files as $id => $file) {
+            if (preg_match('/^[0-9]*\-[0-9]{2}\-[0-9]{2}\.zip$/', $file)) {
+                $date = new DateTime(preg_replace('/\.zip/', '', $file));
+                $dates[] = date_format($date, 'd/m/Y');
+            }
+        }
+        if (!isset($dates)) {
+            return null;
+        } else {
+            return $dates;
+        }
+    }
+
+    public function getFilesInZip($zipName) {
+        $zip = new ZipArchive();
+        $filePath = __DIR__ . "/../logs/$zipName";
+
+        if (file_exists($filePath)) {
+            $zip->open($filePath, ZipArchive::CREATE);
+            for ($i = 0; $i < $zip->numFiles; $i++) {
+                $files[] = $zip->getNameIndex($i);
+            }
+            $zip->close();
+            return $files;
+        } else {
+            return null;
+        }
+    }
+
+    public function searchFilesInZip($search) {
+        $matchesFiles = [];
+        $files = $this->getAllDates();
+        foreach ($files as $file) {
+            if (!empty($search) && strpos($file, $search) !== false) {
+                $matchesFiles[] = $file;
+            }
+        }
+        return $matchesFiles;
+    }
+
+    public function getContent($zipName, $file) {
+        $zip = new ZipArchive();
+        $filePath = __DIR__ . "/../logs/$zipName";
+
+        if (file_exists($filePath)) {
+            $zip->open($filePath, ZipArchive::CREATE);
+            $content = $zip->getFromName($file);
+            $zip->close();
+            return $content;
+        } else {
+            return null;
+        }
+    }
+
+    public function close() {
+        $this->zip->close();
     }
 }

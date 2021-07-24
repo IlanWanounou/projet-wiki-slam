@@ -25,6 +25,9 @@ switch ($requestedPage) {
     case 'articles/edit':
         require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/articleEdit.php'));
         break;
+    case 'logs':
+        require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/logs.php'));
+        break;
     default:
         require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/panel.php'));
         break;
