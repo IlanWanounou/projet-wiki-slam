@@ -36,8 +36,8 @@ require_once(__DIR__ . '/../../controleurs/utilities.php');
         foreach ($dates as $date) {
             $split = explode('/', $date);
             if (isset($split[1], $split[2])) {
-                if (!in_array($split[1], $listMonths)) {
-                    $listMonths[] = $split[1];
+                if (!in_array($split[1] . '/' . $split[2], $listMonths)) {
+                    $listMonths[] = $split[1] . '/' . $split[2];
                     ?>
                     <optgroup label="<?php echo Utilities::idToMonth($split[1]) . ' ' . $split[2] ?>"></optgroup>
                     <?php

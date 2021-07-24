@@ -115,9 +115,14 @@ class LogManager
                 $files[] = $zip->getNameIndex($i);
             }
             $zip->close();
-            return $files;
+            if (!empty($files)) {
+                return $files;
+            } else {
+                return [];
+            }
+            
         } else {
-            return null;
+            return [];
         }
     }
 

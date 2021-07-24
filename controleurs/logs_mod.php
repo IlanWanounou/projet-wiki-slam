@@ -26,7 +26,6 @@ if (isset($_POST['log'])) {
         $file = explode('/', $_POST['open']);
         $content = $logManager->getContent($file[0] . '.zip', $file[1]);
         include_once(__DIR__ . '/../vues/admin_vues/v_admin_logs_fileContent.php');
-
     }
     die();
 } else if (isset($_POST['search'])) {
@@ -36,7 +35,6 @@ if (isset($_POST['log'])) {
     foreach ($files as $file) {
         // Pas d'include_once
         $date = null;
-
         include(__DIR__ . '/../vues/admin_vues/v_admin_logs_files.php');
     }
     echo '</div>';
