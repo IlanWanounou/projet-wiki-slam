@@ -132,7 +132,8 @@ $(document).ready(function () {
     });
 
     // Suppression d'un fichier d'un zip
-    $('body').on( "click", ".delete-file", function () {
+    $('body').on( "click", ".delete-file", function (e) {
+        e.preventDefault();
         removeAlerts();
         let file = getAttr($(this), 'deleteto');
         let element = $(this);
@@ -140,7 +141,8 @@ $(document).ready(function () {
     });
 
     // Suppression d'un zip
-    $('body').on( "click", ".delete-directory", function () {
+    $('body').on( "click", ".delete-directory", function (e) {
+        e.preventDefault();
         removeAlerts();
         let repertory = getAttr($(this), 'deleteto');
         let element = $(this);
@@ -148,7 +150,8 @@ $(document).ready(function () {
     });
 
     // Ouverture du contenu d'un zip
-    $('body').on( "click", ".open-directory", function () {
+    $('body').on( "click", ".open-directory", function (e) {
+        e.preventDefault();
         removeAlerts();
         let repertory = getAttr($(this), 'openTo');
         $("#search").val(repertory);
@@ -164,7 +167,8 @@ $(document).ready(function () {
     });
 
     // Affichage du contenu d'un fichier d'un zip
-    $('body').on( "click", ".open-file", function () {
+    $('body').on( "click", ".open-file", function (e) {
+        e.preventDefault();
         removeAlerts();
         let file = getAttr($(this), 'openTo');
         tryOpenFile(file);

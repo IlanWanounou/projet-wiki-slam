@@ -27,7 +27,6 @@ require_once(__DIR__ . '/../../controleurs/utilities.php');
     </style>
 </noscript>
 <div id="content">
-    <label for="selectLog">Séléction d'une date</label>
     <div class="form-group w-50">
         <input type="text" class="form-control" placeholder="Rechercher une date (ex: 22/07/2021)" id="search">
     </div>

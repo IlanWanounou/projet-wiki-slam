@@ -11,6 +11,13 @@ if (isset($_POST['log'])) {
 
         $logManager = new LogManager();
         $files = $logManager->getFilesInZip($zipName);
+        if (count($files) > 1) {
+            echo '<br><p><small class="text-muted">' . count($files) . ' fichiers trouvés</small></p>';
+        } else if (count($files) === 1) {
+            echo '<br><p><small class="text-muted">1 fichier trouvé</small></p>';
+        } else {
+            echo '<br><p><small class="text-muted">Aucun fichier trouvé</small></p>';
+        }
         echo '<div class="row mt-3">';
         foreach ($files as $file) {
             // Pas d'include_once
@@ -31,6 +38,13 @@ if (isset($_POST['log'])) {
 } else if (isset($_POST['search'])) {
     $search = $_POST['search'];
     $files = $logManager->searchFilesInZip($search);
+    if (count($files) > 1) {
+        echo '<br><p><small class="text-muted">' . count($files) . ' fichiers trouvés</small></p>';
+    } else if (count($files) === 1) {
+        echo '<br><p><small class="text-muted">1 fichier trouvé</small></p>';
+    } else {
+        echo '<br><p><small class="text-muted">Aucun fichier trouvé</small></p>';
+    }
     echo '<div class="row mt-3">';
     foreach ($files as $file) {
         // Pas d'include_once
