@@ -121,6 +121,17 @@ class LogManager
         }
     }
 
+    public function searchFilesInZip($search) {
+        $matchesFiles = [];
+        $files = $this->getAllDates();
+        foreach ($files as $file) {
+            if (!empty($search) && strpos($file, $search) !== false) {
+                $matchesFiles[] = $file;
+            }
+        }
+        return $matchesFiles;
+    }
+
     public function getContent($zipName, $file) {
         $zip = new ZipArchive();
         $filePath = __DIR__ . "/../logs/$zipName";
@@ -133,5 +144,9 @@ class LogManager
         } else {
             return null;
         }
+    }
+
+    public function close() {
+        $this->zip->close();
     }
 }

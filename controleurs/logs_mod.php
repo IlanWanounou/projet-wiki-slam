@@ -29,6 +29,18 @@ if (isset($_POST['log'])) {
 
     }
     die();
+} else if (isset($_POST['search'])) {
+    $search = $_POST['search'];
+    $files = $logManager->searchFilesInZip($search);
+    echo '<div class="row mt-3">';
+    foreach ($files as $file) {
+        // Pas d'include_once
+        $date = null;
+
+        include(__DIR__ . '/../vues/admin_vues/v_admin_logs_files.php');
+    }
+    echo '</div>';
+    die();
 }
 ?>
 

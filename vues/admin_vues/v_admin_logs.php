@@ -14,8 +14,11 @@ require_once(__DIR__ . '/../../controleurs/utilities.php');
 <h2>Journalisation</h2>
 
 <label for="selectLog">Séléction d'une date</label>
+<div class="form-group w-50">
+    <input type="text" class="form-control" placeholder="Rechercher une date (ex: 22/07/2021)" id="search" name="search">
+</div>
 <select class="form-control w-50" id="selectLog">
-    <option value="">Choisir...</option>
+    <option value="">Choisir parmis la liste...</option>
     <?php
     $listMonths = [];
     foreach ($dates as $date) {
