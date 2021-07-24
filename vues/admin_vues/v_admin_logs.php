@@ -29,7 +29,7 @@ require_once(__DIR__ . '/../../controleurs/utilities.php');
 <div id="content">
     <label for="selectLog">Séléction d'une date</label>
     <div class="form-group w-50">
-        <input type="text" class="form-control" placeholder="Rechercher une date (ex: 22/07/2021)" id="search" name="__<?= bin2hex(random_bytes(20)); ?>">
+        <input type="text" class="form-control" placeholder="Rechercher une date (ex: 22/07/2021)" id="search">
     </div>
     <div id="select">
         <select class="form-control w-50" id="selectLog">
@@ -46,7 +46,6 @@ require_once(__DIR__ . '/../../controleurs/utilities.php');
                         <?php
                     }
                 }
-                
                 ?>
                 <option value="<?=$date?>"><?=$date?></option>
                 <?php

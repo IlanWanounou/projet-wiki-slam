@@ -169,7 +169,7 @@ class LogManager
             $zip->deleteName($file);
             $zip->close();
         } else {
-            throw new Exception($zipName);
+            throw new Exception();
         }
     }
 }

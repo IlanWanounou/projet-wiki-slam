@@ -60,10 +60,10 @@ if (isset($_POST['log'])) {
                 $logManager->deleteFileInZip($file[0], $file[1]);
                 echo '1';
             } else {
-                throw new Exception('ERREUR!');
+                throw new Exception();
             }
         } catch (Exception $ex) {
-            echo 'ex:' . $ex->getMessage();
+            echo '0';
         }
         die();
     } else {
