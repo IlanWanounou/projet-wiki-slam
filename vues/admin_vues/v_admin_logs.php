@@ -28,11 +28,11 @@ require_once(__DIR__ . '/../../controleurs/utilities.php');
 </noscript>
 <div id="content">
     <div class="form-group w-50">
-        <input type="text" class="form-control" placeholder="Rechercher une date (ex: 22/07/2021)" id="search">
+        <input type="text" class="form-control" autocomplete="off" placeholder="Rechercher une date (ex: 22/07/2021)" id="search">
     </div>
     <div id="select">
         <select class="form-control w-50" id="selectLog">
-            <option value="">Choisir parmis la liste...</option>
+            <option value="">Choisir par date</option>
             <?php
             $listMonths = [];
             foreach ($dates as $date) {

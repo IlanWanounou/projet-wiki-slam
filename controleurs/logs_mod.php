@@ -12,7 +12,7 @@ if (isset($_POST['log'])) {
         $logManager = new LogManager();
         $files = $logManager->getFilesInZip($zipName);
         if (count($files) > 1) {
-            echo '<br><p><small class="text-muted">' . count($files) . ' fichiers trouvés</small></p>';
+            echo '<br><p><small class="multiple text-muted">' . count($files) . ' fichiers trouvés</small></p>';
         } else if (count($files) === 1) {
             echo '<br><p><small class="text-muted">1 fichier trouvé</small></p>';
         } else {
@@ -39,7 +39,7 @@ if (isset($_POST['log'])) {
     $search = $_POST['search'];
     $files = $logManager->searchFilesInZip($search);
     if (count($files) > 1) {
-        echo '<br><p><small class="text-muted">' . count($files) . ' fichiers trouvés</small></p>';
+        echo '<br><p><small class="multiple text-muted">' . count($files) . ' fichiers trouvés</small></p>';
     } else if (count($files) === 1) {
         echo '<br><p><small class="text-muted">1 fichier trouvé</small></p>';
     } else {

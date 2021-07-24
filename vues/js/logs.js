@@ -15,6 +15,10 @@ $(document).ready(function () {
         });
     }
 
+    function showTimerDiff(start) {
+        return Date.now() - start;
+    }
+
     function updateList() {
         $('#select').load(document.URL + ' #selectLog');
     }
@@ -49,7 +53,8 @@ $(document).ready(function () {
     }
 
     function trySearchLike(value) {
-        showSpinner();
+        const start = Date.now();
+        //showSpinner();
         setDefaultSelectedValue();
         $.post('',
         {
@@ -58,6 +63,8 @@ $(document).ready(function () {
             if (data) {
                 $("#logs").html(data);
                 replace("#log-content", ' ');
+                const diff = showTimerDiff(start);
+                $("#logs small.multiple").append(' en ' + diff + ' ms');
             }
         });
     }
