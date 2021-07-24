@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . '/../../../controleurs/logs_mod.php');
+
 $meta['title'] = 'Page logs';
 $meta['css']   = ['admin.css'];
 $meta['js']    = ['logs.js'];
@@ -14,9 +16,6 @@ $currentPagePath = AdminManager::getCurrentPagePath();
 $currentConfigPage = AdminManager::getCurrentPageConfig($admin_pages);
 $logManager = new LogManager;
 $dates = $logManager->getAllDates();
-
-
-require_once(__DIR__ . '/../../../controleurs/logs_mod.php');
 
 $loadContentName = 'v_admin_logs.php';
 require_once(__DIR__ . '/../../../vues/admin_vues/v_admin_skeleton.php');

@@ -4,6 +4,7 @@ namespace Manager;
 
 use ZipArchive;
 use DateTime;
+use Exception;
 
 class LogManager
 {
@@ -115,9 +116,14 @@ class LogManager
                 $files[] = $zip->getNameIndex($i);
             }
             $zip->close();
-            return $files;
+            if (!empty($files)) {
+                return $files;
+            } else {
+                return [];
+            }
+            
         } else {
-            return null;
+            return [];
         }
     }
 
@@ -148,5 +154,22 @@ class LogManager
 
     public function close() {
         $this->zip->close();
+    }
+
+    public function deleteZip($zipName) {
+        unlink(__DIR__ . "/../logs/$zipName");
+    }
+
+    public function deleteFileInZip($zipName, $file) {
+        $zip = new ZipArchive();
+        $filePath = __DIR__ . "/../logs/$zipName.zip";
+
+        if (file_exists($filePath)) {
+            $zip->open($filePath, ZipArchive::CREATE);
+            $zip->deleteName($file);
+            $zip->close();
+        } else {
+            throw new Exception();
+        }
     }
 }
