@@ -7,6 +7,7 @@ $(document).ready(function () {
         }, function(data) {
             if (data) {
                 $("#logs").html(data);
+                $("#log-content").html(' ');
             }
         });
     });
