@@ -28,7 +28,7 @@ if($isEmpty) {?>
     <div class="row">
         <?php foreach ($allImages as $image) {
             if($image != '.' && $image != '..') {?>
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="col-md-3 p-2 grey">
             <div class="card">
                 <a target="_blank" href="/public/images/uploads/<?=$image ?>"><img class="card-img-top" src="/public/images/uploads/<?=$image ?>" alt=""></a>
                 <div class="btn-group pt-1" role="group" >
