@@ -27,9 +27,6 @@ class gestionImage
         return glob($folder."*");
     }
 
-    public function addImage($folder) {
-
-    }
 
     public function deleteImage($url) {
         unlink($url);
