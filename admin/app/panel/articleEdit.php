@@ -1,23 +1,22 @@
 <?php
+
+use Controller\src\Admin\Article\ArticleManager;
+use Controller\src\Admin\Article\EditArticle;
+use Controller\src\Admin\Path\AdminPathManager;
+
+require_once(__DIR__ . '/../../../controleurs/src/EditArticle.php');
+require_once(__DIR__ . '/../../../controleurs/src/AdminPathManager.php');
+require_once(__DIR__ . '/../../../controleurs/src/ArticleManager.php');
+require_once(__DIR__ . '/../../../controleurs/src/ArticleCarousel.php');
+
 $meta['title'] = 'Panel admin - Liste de tout les articles';
 $meta['css'] = ['admin.css'];
 $meta['js'] = ['index.js'];
 
-require_once(__DIR__ . '/../../../controleurs/bdd.php');
-require_once(__DIR__ . '/../../../controleurs/editArticle.php');
-require_once(__DIR__ . '/../../../modele/navbaritems.php');
-require_once(__DIR__ . '/../../../controleurs/adminManager.php');
-require_once(__DIR__ . '/../../../controleurs/articleManager.php');
-require_once(__DIR__ . '/../../../controleurs/articleCarousel.php');
-
-use Services\Admin\Manager\AdminManager as AdminManager;
-
-$currentPagePath = AdminManager::getCurrentPagePath();
-$currentConfigPage = AdminManager::getCurrentPageConfig($admin_pages);
-$articleManager = new Article\ArticleManager($bdd);
-$editArticle = new Article\editArticle($bdd);
-
-
+$currentPagePath = AdminPathManager::getCurrentPagePath();
+$currentConfigPage = AdminPathManager::getCurrentPageConfig($admin_pages);
+$articleManager = new ArticleManager($bdd);
+$editArticle = new EditArticle($bdd);
 
 
 try {
@@ -28,7 +27,7 @@ try {
                     L\'article a été modifié. </div>';
         } else {
             $result = '<div class="alert alert-danger mt-4" role="alert">
-                 Échec l\'article n\'a pas pu être modifié. </div>';
+                    Échec l\'article n\'a pas pu être modifié. </div>';
         }
     }
 }catch (Exception $e) {
@@ -55,10 +54,10 @@ else if (isset($_SESSION['token'], $_GET['t']) && $_SESSION['token'] == $_GET['t
     $success = true;
     if ($success) {
         $result = '<div class="text-center alert alert-danger mt-4" role="alert">
-                   L\'article a été supprimé. </div>';
+                    L\'article a été supprimé. </div>';
     } else {
         $result = '<div class="text-center alert alert-danger mt-4" role="alert">
-                 Échec l\'article n\'a pas pu être supprimé. </div>';
+                    Échec l\'article n\'a pas pu être supprimé. </div>';
     }
 
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Article;
+namespace Controller\src\Admin\Article;
 
 use Exception;
-use Throwable;
+use mysqli_sql_exception;
 
 class ArticleManager {
 
@@ -28,7 +28,7 @@ class ArticleManager {
                 return $articles;
             }
             
-        } catch (Throwable $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
     }
@@ -43,7 +43,7 @@ class ArticleManager {
             ));
             return $requete->fetch()[0] == 1;
             
-        } catch (Throwable $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
     }
@@ -58,7 +58,7 @@ class ArticleManager {
             ));
             return $requete->fetch()[0];
             
-        } catch (Throwable $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
     }
@@ -73,7 +73,7 @@ class ArticleManager {
             ));
             return $requete->fetch()['content'];
             
-        } catch (Throwable $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
     }

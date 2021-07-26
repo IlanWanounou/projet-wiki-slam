@@ -1,11 +1,11 @@
 <?php
 
-
 namespace SearchBar;
-use Exception;
-use Throwable;
 
-class recherche
+use Exception;
+use mysqli_sql_exception;
+
+class Recherche
 {
     private $bdd;
 
@@ -34,7 +34,7 @@ class recherche
             $requete = $bdd->query($requete);
             return $requete->fetchAll();
 
-        }catch (Throwable $e) {
+        }catch (mysqli_sql_exception $e) {
             throw new Exception($e);
         }
 

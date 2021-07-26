@@ -1,8 +1,12 @@
 <?php
-require_once(__DIR__ . '/../controleurs/bdd.php');
-require_once(__DIR__ . '/../controleurs/SearchBar.php');
 
-$recherche = new SearchBar\recherche($bdd);
+use Controller\src\Admin\Article\ArticleCarousel;
+use SearchBar\Recherche;
+
+require_once(__DIR__ . '/../controleurs/modules/bdd.php');
+require_once(__DIR__ . '/../controleurs/src/SearchBar.php');
+
+$recherche = new Recherche($bdd);
 
     $resulat = $recherche->rechecher($_GET['q']);
 
@@ -23,7 +27,7 @@ if (count($resulat) === 0) {
 foreach ($resulat as $affiche) {?>
     <div class="col-md-4">
     <div class="card" style="width: 18rem;">
-    <?php if(Article\ArticleCarousel::getStatusCode('/public/images/uploads/' . $affiche['image']) !== 404) { ?>
+    <?php if(ArticleCarousel::getStatusCode('/public/images/uploads/' . $affiche['image']) !== 404) { ?>
         <img class="card-img-top" src="/public/images/uploads/<?= $affiche['image'] ?>" alt=Image-<?= $affiche['titre'] ?> >
         <?php } else { ?>
                 <img class="card-img-top" src="/public/images/no_code.png" >

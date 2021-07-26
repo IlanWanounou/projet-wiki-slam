@@ -1,9 +1,9 @@
 <?php
 
-namespace Creation;
+namespace Controller\src\Admin\Article;
 
 use Exception;
-use Throwable;
+use mysqli_sql_exception;
 
 class CreationDef
 {
@@ -35,7 +35,7 @@ class CreationDef
                 return false;
             }
 
-        } catch (Throwable $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur");
 
         }

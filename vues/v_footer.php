@@ -1,11 +1,14 @@
 <?php
 
-require_once(__DIR__ . '/../controleurs/bdd.php');
-require_once(__DIR__ . '/../controleurs/configManager.php');
-$footer = Services\Admin\Manager\ConfigManager::getFooter($bdd);
+use Controller\src\Admin\Config\ConfigManager;
+
+require_once(__DIR__ . '/../controleurs/modules/bdd.php');
+require_once(__DIR__ . '/../controleurs/src/ConfigManager.php');
+
+$footer = ConfigManager::getFooter($bdd);
 ?>
 
 <footer class='text-center p-1 text-white'>
-    <?= $footer[0]; ?>
-    <?= $footer[1]; ?>
+    <?php if (isset($footer[0])) { echo $footer[0]; } ?>
+    <?php if (isset($footer[1])) { echo $footer[1]; } ?>
 </footer>
