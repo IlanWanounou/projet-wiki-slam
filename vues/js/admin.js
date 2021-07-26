@@ -148,4 +148,14 @@ function resetCss() {
     $('#reset-css-content').attr('disabled', '');
 }
 
+setTimeout(function() {
+    img.onchange = evt => {
+        const [file] = img.files
+        if (file) {
+            prew.src = URL.createObjectURL(file)
+        }
+    }
+},1)
+
+
 
