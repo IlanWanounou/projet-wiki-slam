@@ -11,12 +11,13 @@ $(document).ready(function () {
             $('#fav-prev-msg').html('Prévisualisation du favicon : ');
         }
     }
-    $('#form-favicon-delete').click(function(){
+    $('#form-favicon-delete').click(function(e){
         preview.src = '/favicon.ico';
         $('#form-favicon-delete').attr('hidden', '');
         $('#form-favicon-push').attr('hidden', '');
         fileid.value = '';
         $('#fav-prev-msg').html('Favicon actuel : ');
+        e.preventDefault();
     });
     $('body').on( "click", "#form-maintenance-on", function() {
         let isExecuted = confirm("Êtes vous sur de vouloir mettre en maintenance le site ?");
