@@ -1,4 +1,5 @@
 <?php
+
 $admin_pages[] = [
     'title' => 'Tableau de board',
     'icon'  => 'fas fa-home',

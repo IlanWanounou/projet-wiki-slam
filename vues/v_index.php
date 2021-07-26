@@ -18,7 +18,10 @@
 <div id="carouselLexique" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <?php
-        for ($i=0; $i < count($articles); $i++) {
+
+use Controller\src\Admin\Article\ArticleCarousel;
+
+for ($i=0; $i < count($articles); $i++) {
             ?>
             <li data-target="#carouselLexique" data-slide-to="<?= $i ?>" <?php if ($i === 0) { ?> class="active" <?php } ?>></li>
             <?php
@@ -34,7 +37,7 @@
                 ?>
                 <div class="carousel-item text-center<?php if ($i === 1) { echo ' active'; } ?>">
                     <?php
-                    if (isset($article['img']) && !empty($article['img'] && Article\ArticleCarousel::getStatusCode('/public/images/uploads/' . $article['img']) !== 404)) {
+                    if (isset($article['img']) && !empty($article['img'] && ArticleCarousel::getStatusCode('/public/images/uploads/' . $article['img']) !== 404)) {
                         ?>
                         <img src="/public/images/uploads/<?= $article['img'] ?>">
                         <?php

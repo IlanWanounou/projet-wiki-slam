@@ -1,14 +1,11 @@
 <?php
 
+namespace Controller\src\Admin\Article;
 
-namespace Article;
+use Exception;
+use mysqli_sql_exception;
 
-
-use mysql_xdevapi\Exception;
-
-include 'creation.php';
-
-class editArticle
+class EditArticle
 {
 
     private $bdd;
@@ -25,8 +22,8 @@ class editArticle
             $bdd = $this->bdd;
             $requete = $bdd->query('SELECT article_id, titre, deleted_at FROM article');
             return $requete->fetchAll();
-        } catch (Throwable $e) {
-            throw  new Exception('error');
+        } catch (mysqli_sql_exception $e) {
+            throw new Exception('error');
         }
     }
 
@@ -39,8 +36,8 @@ class editArticle
                 $id
             ));
             return $requete->fetch();
-        } catch (Throwable $e) {
-            throw  new Exception('error');
+        } catch (mysqli_sql_exception $e) {
+            throw new Exception('error');
         }
     }
 
@@ -57,8 +54,8 @@ class editArticle
             $requete->execute(array(
                 $id
             ));
-           return $requete->fetch();
-        } catch (Throwable $e) {
+            return $requete->fetch();
+        } catch (mysqli_sql_exception $e) {
             throw new Exception($e);
         }
     }
@@ -72,8 +69,8 @@ class editArticle
                 $id
             ));
             return $requete->fetch();
-        } catch (Throwable $e) {
-            throw  new Exception($e);
+        } catch (mysqli_sql_exception $e) {
+            throw new Exception($e);
         }
     }
 
@@ -96,7 +93,7 @@ class editArticle
                 return true;
 
             } else {
-                $isUpload = \Creation\CreationDef::uploadImage($image);
+                $isUpload = CreationDef::uploadImage($image);
                 if ($isUpload) {
                     $requete = $bdd->prepare('UPDATE article SET `titre` = :titre, `contenue` = :contenue, `phrase_intro` = :intro, `image` = :image, `updated_at` = CURRENT_TIMESTAMP  where article_id = :id');
                     $requete->execute(array(
@@ -111,7 +108,7 @@ class editArticle
                 }
 
             }
-        } catch (\Throwable $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception($e);
         }
         return false;
@@ -120,7 +117,7 @@ class editArticle
     public function articleDelete($id) {
         $requete = $this->bdd->prepare('DELETE FROM article WHERE article_id = ?');
         $requete->execute(array(
-           $id
+            $id
         ));
         $requete->closeCursor();
     }

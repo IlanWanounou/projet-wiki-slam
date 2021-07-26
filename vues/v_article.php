@@ -1,7 +1,10 @@
 <?php
-require_once(__DIR__ . '/../controleurs/adminManager.php');
 
-$articleManager = new Article\ArticleManager($bdd);
+use Controller\src\Admin\Article\ArticleManager;
+
+require_once(__DIR__ . '/../controleurs/src/ArticleManager.php');
+
+$articleManager = new ArticleManager($bdd);
 
 $content = $articleManager->getContent($parseArticleId);
 echo $content;

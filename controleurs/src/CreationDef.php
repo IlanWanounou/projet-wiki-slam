@@ -1,6 +1,6 @@
 <?php
 
-namespace Creation;
+namespace Controller\src\Admin\Article;
 
 require_once(__DIR__ . '/gestionImage.php');
 
@@ -8,7 +8,7 @@ require_once(__DIR__ . '/gestionImage.php');
 use gestion;
 
 use Exception;
-use Throwable;
+use mysqli_sql_exception;
 
 class CreationDef
 {
@@ -40,7 +40,7 @@ class CreationDef
                 return false;
             }
 
-        } catch (Throwable $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur");
 
         }

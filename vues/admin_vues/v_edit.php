@@ -8,7 +8,10 @@
 
     <h1 class="text-center">Edition de l'article <?= $_GET['article']?> - <?= htmlspecialchars($allContent['titre'])?> </h1>
     <?php
-    if(!$allContent['deleted_at']) {
+
+        use Controller\src\Admin\Article\ArticleCarousel;
+
+if(!$allContent['deleted_at']) {
         ?>
     <h3 class="text-center">L'article est actuellement en ligne</h3>
     <?php } else { ?>
@@ -34,7 +37,7 @@
             <textarea  name="intro" placeholder="Intro" id="form-intro" class="form-control" rows="3" cols="30" required><?= $allContent['phrase_intro']?>
             </textarea>
         </div>
-        <?php if(Article\ArticleCarousel::getStatusCode('/public/images/uploads/' . $allContent['image']) !== 404) {?>
+        <?php if(ArticleCarousel::getStatusCode('/public/images/uploads/' . $allContent['image']) !== 404) {?>
         <img class="col-md-4 p-2 grey" src="/public/images/uploads/<?= $allContent['image'] ?>" >
 <?php } ?>
         <div class="form-group">

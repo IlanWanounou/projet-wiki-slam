@@ -1,9 +1,9 @@
 <?php
 
-namespace Maintenance;
+namespace Controller\src\Admin\Config;
 
 use Exception;
-use Throwable;
+use mysqli_sql_exception;
 
 class Maintenance {
 
@@ -20,7 +20,7 @@ class Maintenance {
             $bdd = $this->bdd;
             $requete = $bdd->query('SELECT `maintenance` FROM config');
             return (bool)$requete->fetch()[0];
-        } catch (Throwable $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
     }
@@ -33,7 +33,7 @@ class Maintenance {
             $requete->execute(array(
                 (int)$state
             ));
-        } catch (Throwable $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
     }

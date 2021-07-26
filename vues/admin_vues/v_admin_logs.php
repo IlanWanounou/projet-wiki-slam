@@ -1,8 +1,7 @@
 <?php
 
-use Utilities\Utilities;
-
-require_once(__DIR__ . '/../../controleurs/utilities.php');
+use Controller\src\Utilities\DateManager;
+require_once(__DIR__ . '/../../controleurs/src/Utilities.php');
 
 ?>
 
@@ -43,7 +42,7 @@ require_once(__DIR__ . '/../../controleurs/utilities.php');
                     if (!in_array($split[1] . '/' . $split[2], $listMonths)) {
                         $listMonths[] = $split[1] . '/' . $split[2];
                         ?>
-                        <optgroup label="<?php echo Utilities::idToMonth($split[1]) . ' ' . $split[2] ?>"></optgroup>
+                        <optgroup label="<?php echo DateManager::idToMonth($split[1]) . ' ' . $split[2] ?>"></optgroup>
                         <?php
                     }
                 }

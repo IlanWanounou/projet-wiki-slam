@@ -1,9 +1,14 @@
 <?php
-require_once(__DIR__ . '/../controleurs/bdd.php');
-require_once(__DIR__ . '/../controleurs/session.php');
-require_once(__DIR__ . '/../controleurs/articleManager.php');
-$articleManager = new Article\ArticleManager($bdd);
-$session        = new Session\SessionManager($bdd);
+
+use Controller\src\Admin\Article\ArticleManager;
+use Controller\src\Session\SessionManager;
+
+require_once(__DIR__ . '/../controleurs/modules/bdd.php');
+require_once(__DIR__ . '/../controleurs/src/Session.php');
+require_once(__DIR__ . '/../controleurs/src/ArticleManager.php');
+
+$articleManager = new ArticleManager($bdd);
+$session        = new SessionManager($bdd);
 
 $pages = $articleManager->getAllArticles($bdd);
 if (!isset($parseArticleId)) {
@@ -45,7 +50,7 @@ if ($session->isConnected() || !isset($isMaintenance) || isset($isMaintenance) &
             </ul>
         </div>
         <?php
-        if (Session\SessionManager::isConnected()) {
+        if (SessionManager::isConnected()) {
             ?>
             <div class="nav-item align-self-center text-right w-190">
                 <a class="btn btn-info btn-sm"  href="/admin/panel"><i class="fas fa-cog"></i> Gérer le site</a>
