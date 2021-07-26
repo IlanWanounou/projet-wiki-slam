@@ -2,6 +2,12 @@
 
 namespace Controller\src\Admin\Article;
 
+require_once(__DIR__ . '\gestionImage.php');
+
+
+use gestion;
+
+
 use Exception;
 use mysqli_sql_exception;
 
@@ -43,14 +49,17 @@ class CreationDef
 
     public static function uploadImage($image): bool
     {
+        $gestionImage = new gestion\GestionImage();
         $target_dir = "../vues/images/uploads/";
         $target_file = $target_dir . basename(($image['name']));
+        $size = $gestionImage->getSizeFolder($target_dir);
+        $sizeAvailable = DIRECTORY_IMAGE_MAXSIZE-$size;
 
         if (getimagesize(($image["tmp_name"]))) {
             if (file_exists($target_file)) {
                 return false;
             }
-            if (count(scandir($target_dir)) >= 20) {
+            if ($sizeAvailable>=$image['size']) {
                 return false;
             }
 
