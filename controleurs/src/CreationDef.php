@@ -2,7 +2,7 @@
 
 namespace Controller\src\Admin\Article;
 
-require_once(__DIR__ . '/gestionImage.php');
+require_once(__DIR__ . '\gestionImage.php');
 
 
 use gestion;
