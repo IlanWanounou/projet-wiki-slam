@@ -1,11 +1,11 @@
 <?php
 
-
 namespace SearchBar;
+
 use Exception;
 use Throwable;
 
-class recherche
+class Recherche
 {
     private $bdd;
 

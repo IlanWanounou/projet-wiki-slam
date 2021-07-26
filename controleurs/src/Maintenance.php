@@ -1,6 +1,6 @@
 <?php
 
-namespace Maintenance;
+namespace Controller\src\Admin\Config;
 
 use Exception;
 use Throwable;

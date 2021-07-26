@@ -1,6 +1,6 @@
 <?php
 
-namespace Article;
+namespace Controller\src\Admin\Article;
 
 use Exception;
 use Throwable;

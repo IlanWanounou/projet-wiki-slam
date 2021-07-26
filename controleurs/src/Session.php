@@ -1,6 +1,6 @@
 <?php
 
-namespace Session;
+namespace Controller\src\Session;
 
 use Exception;
 use Throwable;

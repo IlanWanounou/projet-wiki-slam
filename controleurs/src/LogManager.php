@@ -1,6 +1,6 @@
 <?php
 
-namespace Manager;
+namespace Controller\src\Admin\Config;
 
 use ZipArchive;
 use DateTime;

@@ -1,14 +1,12 @@
 <?php
 
-
-namespace Article;
-
+namespace Controller\src\Admin\Article;
 
 use mysql_xdevapi\Exception;
 
 include 'creation.php';
 
-class editArticle
+class EditArticle
 {
 
     private $bdd;

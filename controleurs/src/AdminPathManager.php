@@ -1,8 +1,8 @@
 <?php
 
-namespace Services\Admin\Manager;
+namespace Controller\src\Admin\Path;
 
-abstract class AdminManager {
+abstract class AdminPathManager {
 
     public static function getCurrentPagePath() {
         $repertories = explode("/", $_SERVER['REQUEST_URI']);
@@ -16,7 +16,7 @@ abstract class AdminManager {
     }
     public static function getCurrentPageConfig($pages) {
         foreach ($pages as $item) {
-            if ($item['href'] == AdminManager::getCurrentPagePath()) {
+            if ($item['href'] == AdminPathManager::getCurrentPagePath()) {
                 return $item;
             }
         }

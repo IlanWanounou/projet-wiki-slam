@@ -1,6 +1,6 @@
 <?php
 
-namespace Services\Admin\Manager;
+namespace Controller\src\Admin\Config;
 
 use Exception;
 use Throwable;
