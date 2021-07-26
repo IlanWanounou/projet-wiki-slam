@@ -5,7 +5,8 @@ namespace Controller\src\Session;
 use Exception;
 use Throwable;
 
-class SessionManager {
+class SessionManager
+{
 
     private $bdd;
 
@@ -14,7 +15,7 @@ class SessionManager {
         $this->bdd = $bdd;
     }
 
-    public function isUserExist($username) : bool
+    public function isUserExist($username): bool
     {
         try {
             $bdd = $this->bdd;
@@ -52,8 +53,8 @@ class SessionManager {
             throw new Exception("Le couple nom d'utilisateur / mot-de-passe est incorrecte.");
         }
     }
-    
-    public static function isConnected() : bool
+
+    public static function isConnected(): bool
     {
         return (isset($_SESSION['id'], $_SESSION['username'], $_SESSION['pass']));
     }

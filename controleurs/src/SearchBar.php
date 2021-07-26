@@ -14,31 +14,28 @@ class Recherche
         $this->bdd = $bdd;
     }
 
-    public function rechecher($demmande) {
+    public function rechecher($demmande)
+    {
         $bdd = $this->bdd;
         try {
             $requete = "";
-            $mot=addslashes($demmande);
-           $mot = explode(" ", $mot);
-           $i=0;
-           foreach ($mot as $value ) {
-              if ($i == 0) {
-                  $requete .= " WHERE ";
-                   } else {
-                  $requete .= " OR ";
-                   }
-               $requete .= "contenue LIKE '%$value%'";
-                   $i++;
-           }
-            $requete = "SELECT article_id, titre, phrase_intro, image FROM article".$requete;
+            $mot = addslashes($demmande);
+            $mot = explode(" ", $mot);
+            $i = 0;
+            foreach ($mot as $value) {
+                if ($i == 0) {
+                    $requete .= " WHERE ";
+                } else {
+                    $requete .= " OR ";
+                }
+                $requete .= "contenue LIKE '%$value%'";
+                $i++;
+            }
+            $requete = "SELECT article_id, titre, phrase_intro, image FROM article" . $requete;
             $requete = $bdd->query($requete);
             return $requete->fetchAll();
-
-        }catch (mysqli_sql_exception $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception($e);
         }
-
-
-
     }
 }

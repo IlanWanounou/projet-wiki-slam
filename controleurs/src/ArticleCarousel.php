@@ -5,7 +5,8 @@ namespace Controller\src\Admin\Article;
 use Exception;
 use mysqli_sql_exception;
 
-class ArticleCarousel {
+class ArticleCarousel
+{
 
     private $bdd;
 
@@ -28,7 +29,7 @@ class ArticleCarousel {
     public static function getStatusCode($img)
     {
         $handle = curl_init($_SERVER['SERVER_NAME'] . $img);
-        curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($handle);
         $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
         return $httpCode;

@@ -41,7 +41,7 @@ class EditArticle
         }
     }
 
-    public function OnOfflineArticle($id)
+    public function onOfflineArticle($id)
     {
         $bdd = $this->bdd;
         try {
@@ -74,7 +74,7 @@ class EditArticle
         }
     }
 
-    public function articleUpdate($id, $titre, $contenue, $intro, $image) : bool
+    public function articleUpdate($id, $titre, $contenue, $intro, $image): bool
     {
 
         try {
@@ -91,7 +91,6 @@ class EditArticle
                 ));
                 $requete->closeCursor();
                 return true;
-
             } else {
                 $isUpload = CreationDef::uploadImage($image);
                 if ($isUpload) {
@@ -106,7 +105,6 @@ class EditArticle
                     $requete->closeCursor();
                     return true;
                 }
-
             }
         } catch (mysqli_sql_exception $e) {
             throw new Exception($e);
@@ -114,7 +112,8 @@ class EditArticle
         return false;
     }
 
-    public function articleDelete($id) {
+    public function articleDelete($id)
+    {
         $requete = $this->bdd->prepare('DELETE FROM article WHERE article_id = ?');
         $requete->execute(array(
             $id
@@ -122,5 +121,3 @@ class EditArticle
         $requete->closeCursor();
     }
 }
-
-

@@ -1,3 +1,9 @@
+<?php
+
+use Controller\src\Admin\Article\ArticleCarousel;
+
+?>
+
 <h1><b>BTS SIO du Lycée Bonaparte</b></h1>
 <h2>Spécialité SLAM</h2>
 <p>
@@ -17,16 +23,20 @@
 <h2>Lexique</h2>
 <div id="carouselLexique" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
+
         <?php
-
-use Controller\src\Admin\Article\ArticleCarousel;
-
-for ($i=0; $i < count($articles); $i++) {
+        for ($i = 0; $i < count($articles); $i++) {
             ?>
-            <li data-target="#carouselLexique" data-slide-to="<?= $i ?>" <?php if ($i === 0) { ?> class="active" <?php } ?>></li>
+            <li data-target="#carouselLexique" data-slide-to="<?= $i ?>"
+            <?php
+            if ($i === 0) {
+                echo 'class="active"';
+            }
+            ?>></li>
             <?php
         }
         ?>
+
     </ol>
     <div class="carousel-inner">
         <?php
@@ -35,7 +45,11 @@ for ($i=0; $i < count($articles); $i++) {
             foreach ($articles as $article) {
                 $i++;
                 ?>
-                <div class="carousel-item text-center<?php if ($i === 1) { echo ' active'; } ?>">
+                <div class="carousel-item text-center<?php
+                if ($i === 1) {
+                    echo ' active';
+                }
+                ?>">
                     <?php
                     if (isset($article['img']) && !empty($article['img'] && ArticleCarousel::getStatusCode('/public/images/uploads/' . $article['img']) !== 404)) {
                         ?>
@@ -57,7 +71,6 @@ for ($i=0; $i < count($articles); $i++) {
                 <?php
             }
         }
-        
         ?>
     </div>
     <a class="carousel-control-prev" href="#carouselLexique" role="button" data-slide="prev">

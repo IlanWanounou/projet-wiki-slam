@@ -6,7 +6,6 @@ $pathToAdminVues = __DIR__ . '/../../vues/admin_vues';
 
 if (isset($_POST['log'])) {
     if (preg_match('/^[0-9]{2}\/[0-9]{2}\/[0-9]*$/', $_POST['log'])) {
-
         $dates = explode('/', $_POST['log']);
         $date = $dates[2] . '-' . $dates[1] . '-' . $dates[0];
         $zipName = $date . '.zip';
@@ -15,7 +14,7 @@ if (isset($_POST['log'])) {
         $files = $logManager->getFilesInZip($zipName);
         if (count($files) > 1) {
             echo '<br><p><small class="multiple text-muted">' . count($files) . ' fichiers trouvés</small></p>';
-        } else if (count($files) === 1) {
+        } elseif (count($files) === 1) {
             echo '<br><p><small class="text-muted">1 fichier trouvé</small></p>';
         } else {
             echo '<br><p><small class="text-muted">Aucun fichier trouvé</small></p>';
@@ -26,10 +25,9 @@ if (isset($_POST['log'])) {
             include "$pathToAdminVues/v_admin_logs_files.php";
         }
         echo '</div>';
-        
     }
     die();
-} else if (isset($_POST['open'])) {
+} elseif (isset($_POST['open'])) {
     if (preg_match('/^[0-9]*\-[0-9]{2}\-[0-9]{2}\/[a-zA-Z0-9_]*\.[a-z]{1,4}$/', $_POST['open'])) {
         $logManager = new LogManager();
         $file = explode('/', $_POST['open']);
@@ -37,12 +35,12 @@ if (isset($_POST['log'])) {
         include_once "$pathToAdminVues/v_admin_logs_fileContent.php";
     }
     die();
-} else if (isset($_POST['search'])) {
+} elseif (isset($_POST['search'])) {
     $search = $_POST['search'];
     $files = $logManager->searchFilesInZip($search);
     if (count($files) > 1) {
         echo '<br><p><small class="multiple text-muted">' . count($files) . ' fichiers trouvés</small></p>';
-    } else if (count($files) === 1) {
+    } elseif (count($files) === 1) {
         echo '<br><p><small class="text-muted">1 fichier trouvé</small></p>';
     } else {
         echo '<br><p><small class="text-muted">Aucun fichier trouvé</small></p>';
@@ -55,7 +53,7 @@ if (isset($_POST['log'])) {
     }
     echo '</div>';
     die();
-} else if (isset($_POST['delete'])) {
+} elseif (isset($_POST['delete'])) {
     if (preg_match('/^[0-9]{2}\/[0-9]{2}\/[0-9]*$/', $_POST['delete'])) {
         // Suppression d'un dossier
         try {
@@ -68,7 +66,7 @@ if (isset($_POST['log'])) {
         } catch (Exception $ex) {
             echo '0';
         }
-    } else if (preg_match('/^[0-9]*\-[0-9]{2}\-[0-9]{2}\/[a-zA-Z0-9_]*\.[a-z]{1,4}$/', $_POST['delete'])) {
+    } elseif (preg_match('/^[0-9]*\-[0-9]{2}\-[0-9]{2}\/[a-zA-Z0-9_]*\.[a-z]{1,4}$/', $_POST['delete'])) {
         // Suppression d'un fichier
         try {
             $file = explode('/', $_POST['delete']);
@@ -87,5 +85,3 @@ if (isset($_POST['log'])) {
     }
     die();
 }
-?>
-

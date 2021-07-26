@@ -12,8 +12,11 @@
 
         <form method="post" id="creationForm" enctype="multipart/form-data">
 
-            <?php if (isset($result)) {
-            echo ($result); } ?>
+            <?php
+            if (isset($result)) {
+                echo ($result);
+            }
+            ?>
             <div class="form-group">
                 <label for="form-titre">Titre</label>
 

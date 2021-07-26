@@ -38,10 +38,10 @@ if ($session->isConnected() || !isset($isMaintenance) || isset($isMaintenance) &
                     $name = htmlspecialchars($name);
                     ?>
                     <li class="nav-item<?php
-                        if ($id == $parseArticleId) {
-                            echo ' active';
-                        }
-                        ?>">
+                    if ($id == $parseArticleId) {
+                        echo ' active';
+                    }
+                    ?>">
                         <a class="nav-link" href="/article/<?=$id?>-<?=$name?>"><?=$name?></a>
                     </li>
                     <?php
@@ -63,7 +63,7 @@ if ($session->isConnected() || !isset($isMaintenance) || isset($isMaintenance) &
                 <a class="btn btn-info btn-sm" href="/admin/login"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
             </div>
             <?php
-            }
+        }
         ?>
     </nav>
     <?php

@@ -20,7 +20,7 @@ if (!isset($username)) {
             <?= $error ?>
         </div>
         <?php
-    } else if (isset($success) && $success) {
+    } elseif (isset($success) && $success) {
         ?>
         <div class="alert alert-success" role="alert">
             <i class="fas fa-spinner fa-spin font-weight-bold"></i>
@@ -38,7 +38,7 @@ if (!isset($username)) {
             </div>
         </noscript>
         <?php
-    } else if (isset($logoutBefore) && $logoutBefore) {
+    } elseif (isset($logoutBefore) && $logoutBefore) {
         ?>
         <div class="alert alert-success" role="alert">
             <i class="fas fa-check"></i>

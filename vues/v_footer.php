@@ -9,6 +9,12 @@ $footer = ConfigManager::getFooter($bdd);
 ?>
 
 <footer class='text-center p-1 text-white'>
-    <?php if (isset($footer[0])) { echo $footer[0]; } ?>
-    <?php if (isset($footer[1])) { echo $footer[1]; } ?>
+    <?php
+    if (isset($footer[0])) {
+        echo $footer[0];
+    }
+    if (isset($footer[1])) {
+        echo $footer[1];
+    }
+    ?>
 </footer>

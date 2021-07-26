@@ -21,9 +21,8 @@ if (isset($_GET['s']) && isset($_SESSION['token']) && $_SESSION['token'] == $_GE
 }
 if (isset($_POST['username'], $_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])) {
     $username = htmlspecialchars($_POST['username']);
-    
     try {
-        $session = new SessionManager($bdd);        
+        $session = new SessionManager($bdd);
         if ($session->isUserExist($_POST['username'])) {
             $session->loginToAccount($_POST['username'], $_POST['password'], (isset($_POST['stayConnected']) && $_POST['stayConnected'] === 'on'));
             $success = true;

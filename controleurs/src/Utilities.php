@@ -4,7 +4,9 @@ namespace Controller\src\Utilities;
 
 abstract class DateManager
 {
-    public static function idToMonth($id) {
+
+    public static function idToMonth($id)
+    {
         $id = ltrim($id, '0');
         switch ($id) {
             case '1':

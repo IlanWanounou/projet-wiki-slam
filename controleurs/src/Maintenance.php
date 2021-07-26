@@ -5,7 +5,8 @@ namespace Controller\src\Admin\Config;
 use Exception;
 use mysqli_sql_exception;
 
-class Maintenance {
+class Maintenance
+{
 
     private $bdd;
 
@@ -14,7 +15,7 @@ class Maintenance {
         $this->bdd = $bdd;
     }
 
-    public function isMaintenance() : bool
+    public function isMaintenance(): bool
     {
         try {
             $bdd = $this->bdd;

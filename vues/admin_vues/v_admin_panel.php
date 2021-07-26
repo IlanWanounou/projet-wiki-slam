@@ -12,7 +12,11 @@
                 } else {
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link<?php if ($currentPagePath == $item['href'] || $currentConfigPage['href'] === $item['href']) { echo ' active'; } ?>" href="/admin/<?= $item['href'] ?>">
+                        <a class="nav-link<?php
+                        if ($currentPagePath == $item['href'] || $currentConfigPage['href'] === $item['href']) {
+                            echo ' active';
+                        }
+                        ?>" href="/admin/<?= $item['href'] ?>">
                             <i class="<?php echo $item['icon']; ?>"></i>
                             <span class="text-color-default"><?php echo $item['title']; ?></span>
                         </a>
