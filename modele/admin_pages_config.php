@@ -29,6 +29,12 @@ $admin_pages[] = [
     'desc'  => 'Ajoutez, modifier ou supprimer les comptes administrateurs ou utilisateurs du site'
 ];
 $admin_pages[] = [
+    'title' => 'Gestion des images',
+    'icon' => 'far fa-images',
+    'href' => 'images'
+];
+
+$admin_pages[] = [
     'header' => true,
     'title'  => 'Gestion des pages',
     'href'   => 'articles'
