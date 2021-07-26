@@ -1,15 +1,17 @@
+<?php if (isset($resultAdd)) {
+    echo ($resultAdd); } ?>
 <h1>Gestion des images</h1>
 <span><?= $taileActuel.'ko sur '.$taileMax.' ko'?></span>
 <?php if($taileActuel<$taileMax) { ?>
     <div class="progress">
         <div class="progress-bar" role="progressbar" style="width: <?= $taileActuel*100/$taileMax?>%" aria-valuenow="<?= $taileActuel ?>" aria-valuemin="0" aria-valuemax="<?= $taileMax ?>"></div>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg  mt-3">Ajouter une image</button>
+    <a href="images/add" class="btn btn-primary btn-lg  mt-3">Ajouter une image</a>
 <?php }else {?>
     <div class="progress">
         <div class="progress-bar bg-danger" role="progressbar" style="width: <?= $taileActuel*100/$taileMax?>%" aria-valuenow="<?= $taileActuel ?>" aria-valuemin="0" aria-valuemax="<?= $taileMax ?>"></div>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg  mt-3" disabled>Ajouter une image</button>
+    <a href="/images/add" class="btn btn-primary btn-lg  mt-3" disabled>Ajouter une image</a>
 
 <?php
 

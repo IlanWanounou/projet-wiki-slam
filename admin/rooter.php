@@ -24,7 +24,11 @@ switch ($requestedPage) {
         require_once(SessionManager::rootInAdmin(__DIR__ . '/app/panel/config.php'));
         break;
     case 'images' :
-        require_once(Session\SessionManager::rootInAdmin(__DIR__ . '/app/panel/gestionImage.php'));
+        require_once(SessionManager::rootInAdmin(__DIR__ . '/app/panel/gestionImage.php'));
+        break;
+    case 'images/add':
+        require_once(SessionManager::rootInAdmin(__DIR__ . '/app/panel/imageAdd.php'));
+        break;
     case 'articles/add':
         require_once(SessionManager::rootInAdmin(__DIR__ . '/app/panel/articleCreate.php'));
         break;
