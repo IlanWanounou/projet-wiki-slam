@@ -7,10 +7,6 @@ require_once(__DIR__ . '\gestionImage.php');
 
 use gestion;
 
-require_once(__DIR__ . '/gestionImage.php');
-
-
-use gestion;
 
 use Exception;
 use mysqli_sql_exception;

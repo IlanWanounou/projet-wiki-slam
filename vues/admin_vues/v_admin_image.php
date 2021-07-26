@@ -1,8 +1,10 @@
 <?php if (isset($resultAdd)) {
     echo ($resultAdd); } ?>
+
+
 <h1>Gestion des images</h1>
-<span><?= $taileActuel.'ko sur '.$taileMax.' ko'?></span>
-<?php if($taileActuel<$taileMax) { ?>
+<span><?= $taileActuel.'ko sur '.DIRECTORY_IMAGE_MAXSIZE.' ko'?></span>
+<?php if($taileActuel<DIRECTORY_IMAGE_MAXSIZE) { ?>
     <div class="progress">
         <div class="progress-bar" role="progressbar" style="width: <?= $taileActuel*100/$taileMax?>%" aria-valuenow="<?= $taileActuel ?>" aria-valuemin="0" aria-valuemax="<?= $taileMax ?>"></div>
     </div>
