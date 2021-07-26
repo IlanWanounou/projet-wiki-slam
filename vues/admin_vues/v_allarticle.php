@@ -1,14 +1,14 @@
 <?php
-require_once(__DIR__ . '/../../controleurs/bdd.php');
-require_once(__DIR__ . '/../../controleurs/editArticle.php');
 
-$editArticle = new Article\editArticle($bdd);
+use Controller\src\Admin\Article\EditArticle;
+
+require_once(__DIR__ . '/../../controleurs/modules/bdd.php');
+require_once(__DIR__ . '/../../controleurs/src/EditArticle.php');
+
+$editArticle = new EditArticle($bdd);
 $titreArticle = $editArticle->selectArticle($bdd);
 
-
-
-
- if(isset($result)) {
+if(isset($result)) {
     echo ($result);
 }  ?>
 

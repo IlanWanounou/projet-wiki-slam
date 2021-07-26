@@ -11,7 +11,7 @@ abstract class ConfigManager {
     public static function uploadFavicon($image)
     {
         try {
-            $target_file = '../favicon.ico';
+            $target_file = __DIR__ . '/../../favicon.ico';
 
             if (getimagesize(($image["tmp_name"]))) {
                 if (move_uploaded_file(($image["tmp_name"]), $target_file)) {
@@ -53,7 +53,7 @@ abstract class ConfigManager {
     public static function getCss() : string
     {
         try {
-            $path = __DIR__ . "/../vues/css/global.css";
+            $path = __DIR__ . "/../../vues/css/global.css";
             if (file_exists($path)) {
                 $myfile = fopen($path, "r");
                 if ($myfile) {
@@ -77,7 +77,7 @@ abstract class ConfigManager {
     public static function setCss($css) : void
     {
         try {
-            file_put_contents(__DIR__ . "/../vues/css/global.css", $css);
+            file_put_contents(__DIR__ . "/../../vues/css/global.css", $css);
         } catch (Throwable $e) {
             throw new Exception("Erreur interne du serveur");
         }

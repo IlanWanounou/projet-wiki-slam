@@ -1,12 +1,13 @@
 <?php
 
-use Manager\LogManager;
+use Controller\src\Admin\Config\LogManager;
+
+require_once(__DIR__ . '/../../modele/config.php');
+require_once(__DIR__ . '/../src/LogManager.php');
 
 try
 {
     date_default_timezone_set('Europe/Paris');
-    require_once(__DIR__ . '/../modele/config.php');
-    require_once(__DIR__ . '/logManager.php');
     $logManager = new LogManager();
     $logManager->logVisitor();
 

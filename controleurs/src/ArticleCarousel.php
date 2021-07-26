@@ -3,7 +3,7 @@
 namespace Controller\src\Admin\Article;
 
 use Exception;
-use Throwable;
+use mysqli_sql_exception;
 
 class ArticleCarousel {
 
@@ -20,7 +20,7 @@ class ArticleCarousel {
             $bdd = $this->bdd;
             $requete = $bdd->query('SELECT `titre` as `title`, `phrase_intro` as `desc`, `image` as `img` FROM article');
             return $requete->fetchAll();
-        } catch (Throwable $e) {
+        } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
     }
@@ -33,6 +33,4 @@ class ArticleCarousel {
         $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
         return $httpCode;
     }
-
-    
 }

@@ -8,14 +8,14 @@ use Exception;
 
 class LogManager
 {
-
+    private $path = __DIR__ . '/../../logs';
     private $zip;
 
     public function __construct()
     {
         $zip = new ZipArchive();
         $date = date('Y-m-d');
-        $filePath = __DIR__ . "/../logs/$date.zip";
+        $filePath = "$this->path/$date.zip";
         $zip->open($filePath, ZipArchive::CREATE);
         $this->zip = $zip;
     }
@@ -65,7 +65,7 @@ class LogManager
     public function getVisitorsCount($date) {
 
         $zip = new ZipArchive();
-        $filePath = __DIR__ . "/../logs/$date.zip";
+        $filePath = "$this->path/$date.zip";
         if (file_exists($filePath)) {
             $zip->open($filePath, ZipArchive::CREATE);
 
@@ -91,7 +91,7 @@ class LogManager
     }
 
     public function getAllDates() {
-        $filePath = __DIR__ . "/../logs";
+        $filePath = $this->path;
         $files = scandir($filePath);
         foreach ($files as $id => $file) {
             if (preg_match('/^[0-9]*\-[0-9]{2}\-[0-9]{2}\.zip$/', $file)) {
@@ -108,7 +108,7 @@ class LogManager
 
     public function getFilesInZip($zipName) {
         $zip = new ZipArchive();
-        $filePath = __DIR__ . "/../logs/$zipName";
+        $filePath = "$this->path/$zipName";
 
         if (file_exists($filePath)) {
             $zip->open($filePath, ZipArchive::CREATE);
@@ -140,7 +140,7 @@ class LogManager
 
     public function getContent($zipName, $file) {
         $zip = new ZipArchive();
-        $filePath = __DIR__ . "/../logs/$zipName";
+        $filePath = "$this->path/$zipName";
 
         if (file_exists($filePath)) {
             $zip->open($filePath, ZipArchive::CREATE);
@@ -157,12 +157,12 @@ class LogManager
     }
 
     public function deleteZip($zipName) {
-        unlink(__DIR__ . "/../logs/$zipName");
+        unlink("$this->path/$zipName");
     }
 
     public function deleteFileInZip($zipName, $file) {
         $zip = new ZipArchive();
-        $filePath = __DIR__ . "/../logs/$zipName.zip";
+        $filePath = "$this->path/$zipName.zip";
 
         if (file_exists($filePath)) {
             $zip->open($filePath, ZipArchive::CREATE);

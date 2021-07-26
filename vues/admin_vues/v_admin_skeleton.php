@@ -7,7 +7,7 @@ $meta['js'][]  = 'jquery-3.6.0.min.js';
 $meta['css']   = array_reverse($meta['css']);
 $meta['js']    = array_reverse($meta['js']);
 
-require_once(__DIR__ . '/../../modele/navbaritems.php');
+require_once(__DIR__ . '/../../modele/admin_pages_config.php');
 require_once(__DIR__ . '/../v_header.php');
 ?>
 <body id="top">

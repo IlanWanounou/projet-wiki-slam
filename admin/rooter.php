@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+
+require_once(__DIR__ . '/../modele/admin_pages_config.php');
 require_once(__DIR__ . '/../controleurs/modules/bdd.php');
 require_once(__DIR__ . '/../controleurs/src/Session.php');
 
