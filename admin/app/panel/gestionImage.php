@@ -20,7 +20,7 @@ $folder = '../vues/images/uploads/';
 $isEmpty = $gestionImage->isFolderEmpty($folder);
 
 $taileActuel = $gestionImage->getSizeFolder($folder); // En KO
-$taileMax = 1000; // En KO
+$taileMax = DIRECTORY_IMAGE_MAXSIZE; // En KO
 
 $allImages = (scandir($folder));
 if(isset($_GET['deleteAll'])) {
