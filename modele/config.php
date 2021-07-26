@@ -12,6 +12,5 @@ define('MYSQL_PASSWORD', 'OszX^hr~m;|TD;zYbs');
 define('MYSQL_DEV_DBNAME'  , 'pf49xzai_wikislam');
 define('MYSQL_DEV_USERNAME', 'pf49xzai_admin');
 
-// taile image
 
 define('DIRECTORY_IMAGE_MAXSIZE', 1000);
