@@ -18,14 +18,14 @@
 <div id="content">
     <div id="message">
         <?php
-        if (isset($success)) { 
+        if (isset($success)) {
             ?>
             <div class="alert alert-success" role="alert">
                 <?= $success ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
             </div>
             <?php
-        } else if (isset($error)) {
+        } elseif (isset($error)) {
             ?>
             <div class="alert alert-danger" role="alert">
                 <?= $error ?>

@@ -20,7 +20,8 @@ class LogManager
         $this->zip = $zip;
     }
 
-    public function logVisitor() {
+    public function logVisitor()
+    {
         $file = 'visitors.log';
         $zip = $this->zip;
         $time = date('H:i:s');
@@ -31,38 +32,39 @@ class LogManager
         } else {
             $contentAppend = "[$time] ($sessionId) " . $_SERVER['REQUEST_URI'] . "\n";
         }
-        
         $zip->addFromString($file, $currentContent . $contentAppend);
         $zip->close();
     }
 
     /**
-     * 
+     * Méthode qui enregistre les logins
+     *
      * @param int $state Etat du login :
      * [1] : Connexion réussie.
      * [2] : Déconnexion réussie.
      * [3] : Mauvais identifiant/mot de passe.
      */
-    public function logLogin($state, $username) {
+    public function logLogin($state, $username)
+    {
         $file = 'logins.log';
         $zip = $this->zip;
         $time = date('H:i:s');
         $sessionId = session_id();
         $currentContent = $zip->getFromName($file);
-        
+
         if ($state === 1) {
             $contentAppend = "[$time] ($sessionId) : Connexion de $username (ip: {$_SERVER['REMOTE_ADDR']})\n";
-        } else if ($state === 2) {
+        } elseif ($state === 2) {
             $contentAppend = "[$time] ($sessionId) : Déconnexion de $username (ip: {$_SERVER['REMOTE_ADDR']})\n";
         } else {
             $contentAppend = "[$time] ($sessionId) : Tentative raté de connexion sur $username (ip: {$_SERVER['REMOTE_ADDR']})\n";
         }
-        
         $zip->addFromString($file, $currentContent . $contentAppend);
         $zip->close();
     }
 
-    public function getVisitorsCount($date) {
+    public function getVisitorsCount($date)
+    {
 
         $zip = new ZipArchive();
         $filePath = "$this->path/$date.zip";
@@ -87,10 +89,10 @@ class LogManager
         } else {
             return 0;
         }
-        
     }
 
-    public function getAllDates() {
+    public function getAllDates()
+    {
         $filePath = $this->path;
         $files = scandir($filePath);
         foreach ($files as $id => $file) {
@@ -106,7 +108,8 @@ class LogManager
         }
     }
 
-    public function getFilesInZip($zipName) {
+    public function getFilesInZip($zipName)
+    {
         $zip = new ZipArchive();
         $filePath = "$this->path/$zipName";
 
@@ -121,13 +124,13 @@ class LogManager
             } else {
                 return [];
             }
-            
         } else {
             return [];
         }
     }
 
-    public function searchFilesInZip($search) {
+    public function searchFilesInZip($search)
+    {
         $matchesFiles = [];
         $files = $this->getAllDates();
         foreach ($files as $file) {
@@ -138,7 +141,8 @@ class LogManager
         return $matchesFiles;
     }
 
-    public function getContent($zipName, $file) {
+    public function getContent($zipName, $file)
+    {
         $zip = new ZipArchive();
         $filePath = "$this->path/$zipName";
 
@@ -152,15 +156,18 @@ class LogManager
         }
     }
 
-    public function close() {
+    public function close()
+    {
         $this->zip->close();
     }
 
-    public function deleteZip($zipName) {
+    public function deleteZip($zipName)
+    {
         unlink("$this->path/$zipName");
     }
 
-    public function deleteFileInZip($zipName, $file) {
+    public function deleteFileInZip($zipName, $file)
+    {
         $zip = new ZipArchive();
         $filePath = "$this->path/$zipName.zip";
 

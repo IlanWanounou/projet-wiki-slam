@@ -20,7 +20,7 @@ class CreationDef
         $this->bdd = $bdd;
     }
 
-    public function insertArticle($titre, $contenue, $intro, $image) : bool
+    public function insertArticle($titre, $contenue, $intro, $image): bool
     {
         try {
             $isUpload = false;
@@ -40,10 +40,8 @@ class CreationDef
             } else {
                 return false;
             }
-
         } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur");
-
         }
     }
 
@@ -70,4 +68,3 @@ class CreationDef
         return false;
     }
 }
-

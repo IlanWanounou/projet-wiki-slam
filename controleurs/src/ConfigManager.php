@@ -6,7 +6,8 @@ use Exception;
 use Throwable;
 use mysqli_sql_exception;
 
-abstract class ConfigManager {
+abstract class ConfigManager
+{
 
     public static function uploadFavicon($image)
     {
@@ -23,10 +24,9 @@ abstract class ConfigManager {
         } catch (Throwable $e) {
             throw new Exception('Impossible de transférer ce fichier');
         }
-        
     }
 
-    public static function getFooter($bdd) : array
+    public static function getFooter($bdd): array
     {
         try {
             $requete = $bdd->query('SELECT `footerTop`, `footerBottom` FROM config');
@@ -37,7 +37,7 @@ abstract class ConfigManager {
         }
     }
 
-    public static function setFooter($bdd, array $footer) : void
+    public static function setFooter($bdd, array $footer): void
     {
         try {
             $requete = $bdd->prepare('UPDATE `config` SET `footerTop` = ?, `footerBottom` = ?');
@@ -50,14 +50,14 @@ abstract class ConfigManager {
         }
     }
 
-    public static function getCss() : string
+    public static function getCss(): string
     {
         try {
             $path = __DIR__ . "/../../vues/css/global.css";
             if (file_exists($path)) {
                 $myfile = fopen($path, "r");
                 if ($myfile) {
-                    $reader = fread($myfile,filesize($path));
+                    $reader = fread($myfile, filesize($path));
                     fclose($myfile);
                     return $reader;
                 } else {
@@ -68,13 +68,12 @@ abstract class ConfigManager {
                 ConfigManager::setCss($page);
                 return ConfigManager::getCss();
             }
-            
         } catch (Throwable $e) {
             throw new Exception($e->getMessage());
         }
     }
 
-    public static function setCss($css) : void
+    public static function setCss($css): void
     {
         try {
             file_put_contents(__DIR__ . "/../../vues/css/global.css", $css);
@@ -82,5 +81,4 @@ abstract class ConfigManager {
             throw new Exception("Erreur interne du serveur");
         }
     }
-
 }

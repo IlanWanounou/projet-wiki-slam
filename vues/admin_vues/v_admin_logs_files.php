@@ -2,8 +2,11 @@
     <div class="card text-center bg-light">
         <h1 class="bg-dark">
         <?php
-        if ($date === null) { echo '<i class="p-2 text-light fas fa-file-archive"></i>'; }
-        else { echo '<i class="text-white-50 fas fa-folder-open"></i>'; }  
+        if ($date === null) {
+            echo '<i class="p-2 text-light fas fa-file-archive"></i>';
+        } else {
+            echo '<i class="text-white-50 fas fa-folder-open"></i>';
+        }
         ?>
         </h1>
 

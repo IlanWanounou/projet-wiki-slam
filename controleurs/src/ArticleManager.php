@@ -5,7 +5,8 @@ namespace Controller\src\Admin\Article;
 use Exception;
 use mysqli_sql_exception;
 
-class ArticleManager {
+class ArticleManager
+{
 
     private $bdd;
 
@@ -27,13 +28,12 @@ class ArticleManager {
             } else {
                 return $articles;
             }
-            
         } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
     }
 
-    public function articleExists($articleId) : bool
+    public function articleExists($articleId): bool
     {
         try {
             $bdd = $this->bdd;
@@ -42,7 +42,6 @@ class ArticleManager {
                 $articleId
             ));
             return $requete->fetch()[0] == 1;
-            
         } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
@@ -57,7 +56,6 @@ class ArticleManager {
                 $articleId
             ));
             return $requete->fetch()[0];
-            
         } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
@@ -72,10 +70,8 @@ class ArticleManager {
                 $articleId
             ));
             return $requete->fetch()['content'];
-            
         } catch (mysqli_sql_exception $e) {
             throw new Exception("Erreur interne du serveur");
         }
     }
-
 }

@@ -23,8 +23,8 @@ if (isset($_GET['articleName'], $_GET['articleId']) && !empty($_GET['articleName
         $parseArticleId = $_GET['articleId'];
         $vue = 'v_article.php';
     }
-} else if (isset($_GET['q']) && !empty($_GET['q'])) {
-    $meta['title'] = 'Recherche - '. $_GET['q'];
+} elseif (isset($_GET['q']) && !empty($_GET['q'])) {
+    $meta['title'] = 'Recherche - ' . $_GET['q'];
     $vue =  'v_recherche.php';
 } else {
     $meta['title'] = 'Lexique - BTS SIO SLAM';

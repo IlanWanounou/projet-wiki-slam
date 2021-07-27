@@ -30,7 +30,7 @@
 <hr>
 <div class="row">
     <?php
-    for ($i=1; $i < count($admin_pages); $i++) { 
+    for ($i = 1; $i < count($admin_pages); $i++) {
         $item = $admin_pages[$i];
         if (!isset($item['header']) || isset($item['header']) && $item['header'] === false) {
             ?>
