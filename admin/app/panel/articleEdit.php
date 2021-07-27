@@ -20,7 +20,7 @@ $editArticle = new EditArticle($bdd);
 
 
 try {
-    if(isset($_POST['titre']) &&  isset($_POST['contenue']) && isset($_POST['intro']) && isset($_FILES['image']) && !empty($_POST['titre'] && $_POST['contenue'] &&  $_POST['intro'])  && $_FILES['image']) {
+    if (isset($_POST['titre']) &&  isset($_POST['contenue']) && isset($_POST['intro']) && isset($_FILES['image']) && !empty($_POST['titre'] && $_POST['contenue'] &&  $_POST['intro'])  && $_FILES['image']) {
         $success = $editArticle->articleUpdate(($_GET['article']), ($_POST['titre']), ($_POST['contenue']), ($_POST['intro']), ($_FILES['image']));
         if ($success) {
             $result = '<div class="alert alert-success mt-4" role="alert">
@@ -30,7 +30,7 @@ try {
                     Échec l\'article n\'a pas pu être modifié. </div>';
         }
     }
-}catch (Exception $e) {
+} catch (Exception $e) {
     echo $e;
 }
 
@@ -39,18 +39,15 @@ if (isset($_GET['article']) && $articleManager->articleExists($_GET['article']))
     $loadContentName  = 'v_edit.php';
     $allContent = $editArticle->selectAllById($_GET['article']);
     require_once(__DIR__ . '/../../../vues/admin_vues/v_admin_skeleton.php');
-
-} else if(isset($_GET['sommeil'])) {
+} elseif (isset($_GET['sommeil'])) {
     $editArticle->OnOfflineArticle($_GET['sommeil']);
     header('Location: /admin/articles/edit');
-
-} else if(isset($_GET['suppression'])) {
+} elseif (isset($_GET['suppression'])) {
     $editArticle->articleDelete($_GET['suppression']);
     $token = bin2hex(random_bytes(50));
     $_SESSION['token'] = $token;
     header('Location: ' . '?t=' . $token);
-}
-else if (isset($_SESSION['token'], $_GET['t']) && $_SESSION['token'] == $_GET['t']) {
+} elseif (isset($_SESSION['token'], $_GET['t']) && $_SESSION['token'] == $_GET['t']) {
     $success = true;
     if ($success) {
         $result = '<div class="text-center alert alert-danger mt-4" role="alert">
@@ -59,7 +56,6 @@ else if (isset($_SESSION['token'], $_GET['t']) && $_SESSION['token'] == $_GET['t
         $result = '<div class="text-center alert alert-danger mt-4" role="alert">
                     Échec l\'article n\'a pas pu être supprimé. </div>';
     }
-
 }
 
     $titreArticle = $editArticle->selectArticle($bdd);

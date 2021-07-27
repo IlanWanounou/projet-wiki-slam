@@ -27,10 +27,10 @@ if (isset($result)) {
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <?php
-            foreach ($titreArticle as $titre) {
-                ?>
+        <?php
+        foreach ($titreArticle as $titre) {
+            ?>
+            <tr>
                 <th><?= $titre['article_id'] ?></th>
                 <td><?= htmlspecialchars($titre['titre']) ?></td>
                 <td><a href="/admin/articles/edit/<?= $titre['article_id'] ?> ">Editer</a></td>
@@ -48,9 +48,11 @@ if (isset($result)) {
                     <td> <span class="badge badge-danger">Hors ligne</span></td>
                     <?php
                 }
-            }
-            ?>
-        </tr>
+                ?>
+            </tr>
+            <?php
+        }
+        ?>
     </tbody>
 </table>
 

@@ -1,3 +1,8 @@
+<?php
+
+use Controller\src\Admin\Article\ArticleCarousel;
+
+?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/hybrid.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -5,18 +10,19 @@
 
 <div class='container'>
 
-
     <h1 class="text-center">Edition de l'article <?= $_GET['article']?> - <?= htmlspecialchars($allContent['titre'])?> </h1>
     <?php
 
-        use Controller\src\Admin\Article\ArticleCarousel;
 
-if(!$allContent['deleted_at']) {
+    if (!$allContent['deleted_at']) {
         ?>
-    <h3 class="text-center">L'article est actuellement en ligne</h3>
-    <?php } else { ?>
+        <h3 class="text-center">L'article est actuellement en ligne</h3>
+        <?php
+    } else {
+        ?>
         <h3 class="text-center">L'article est actuellement hors ligne</h3>
-  <?php  }?>
+        <?php
+    } ?>
 
     <form method="post" id="creationForm" enctype="multipart/form-data" class="justify-content-center">
         <?php if (isset($result)) {
@@ -37,9 +43,9 @@ if(!$allContent['deleted_at']) {
             <textarea  name="intro" placeholder="Intro" id="form-intro" class="form-control" rows="3" cols="30" required><?= $allContent['phrase_intro']?>
             </textarea>
         </div>
-        <?php if(ArticleCarousel::getStatusCode('/public/images/uploads/' . $allContent['image']) !== 404) {?>
+        <?php if (ArticleCarousel::getStatusCode('/public/images/uploads/' . $allContent['image']) !== 404) {?>
         <img class="col-md-4 p-2 grey" src="/public/images/uploads/<?= $allContent['image'] ?>" >
-<?php } ?>
+        <?php } ?>
         <div class="form-group">
             <label for="form-image">Changer d'image</label>
             <input  type="file" accept="image/*" name="image" id="form-image" class="form-control">
