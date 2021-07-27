@@ -1,3 +1,5 @@
+/* global Quill */
+
 window.onload = function () {
   const toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],
