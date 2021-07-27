@@ -41,17 +41,20 @@ if (isset($_GET['delete'])) {
 
 if (isset($_FILES['image']) && !empty($_FILES['image'])) {
     $success = $upload->uploadImage($_FILES['image']);
-    header("Refresh: 5");
     if ($success) {
-        $resultAdd = '<div class="alert alert-success mt-4" role="alert">
-                    L\'image a été ajouter. </div>';
+        header( 'Location:  /admin/images?success=1');
     } else {
-        $resultAdd = '<div class="alert alert-danger mt-4" role="alert">
-                    Échec l\'image n\'a pas pu être ajouter. </div>';
+        header( 'Location:  /admin/images?success=2' );
     }
-
 }
 
+if (isset($_GET['success']) && $_GET['success'] == 1){
+    $resultAdd = '<div class="alert alert-success mt-4" role="alert">
+                    L\'image a été ajouter. </div>';
+} else if (isset($_GET['success'])  && $_GET['success'] == 2){
+    $resultAdd = '<div class="alert alert-danger mt-4" role="alert">
+                    Échec l\'image n\'a pas pu être ajouter. </div>';
 
+}
 $loadContentName = 'v_admin_image.php';
 require_once(__DIR__ . '/../../../vues/admin_vues/v_admin_skeleton.php');
