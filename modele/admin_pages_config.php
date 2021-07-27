@@ -26,12 +26,14 @@ $admin_pages[] = [
     'icon'  => 'fas fa-coins',
     'href'  => 'accounts',
     'color' => '#795548',
-    'desc'  => 'Ajoutez, modifier ou supprimer les comptes administrateurs ou utilisateurs du site'
+    'desc'  => 'Ajouter, modifier ou supprimer les comptes administrateurs ou utilisateurs du site'
 ];
 $admin_pages[] = [
     'title' => 'Gestion des images',
     'icon' => 'far fa-images',
-    'href' => 'images'
+    'href' => 'images',
+    'color' => '#ffa013',
+    'desc'  => 'Ajouter, modifier ou supprimer une ou plusieurs images sur le site'
 ];
 
 $admin_pages[] = [
