@@ -1,37 +1,33 @@
-    window.onload = function () {
-    var toolbarOptions = [
-        ['bold', 'italic', 'underline', 'strike'],
-        ['blockquote', 'code-block', 'image'],
+window.onload = function () {
+  const toolbarOptions = [
+    ['bold', 'italic', 'underline', 'strike'],
+    ['blockquote', 'code-block', 'image'],
 
-        [{ 'header': 1 }, { 'header': 2 }],
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        [{ 'script': 'sub'}, { 'script': 'super' }],
-        [{ 'indent': '-1'}, { 'indent': '+1' }],
+    [{ header: 1 }, { header: 2 }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    [{ script: 'sub' }, { script: 'super' }],
+    [{ indent: '-1' }, { indent: '+1' }],
 
-        [{ 'size': ['small', false, 'large', 'huge'] }],
-        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    [{ size: ['small', false, 'large', 'huge'] }],
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
 
-        [{ 'color': [] }, { 'background': [] }],
-        [{ 'align': [] }],
+    [{ color: [] }, { background: [] }],
+    [{ align: [] }],
 
-        ['clean']
-    ]
+    ['clean']
+  ]
 
-    window.hljs.configure({   // optionally configure hljs
-        languages: ['javascript', 'php', 'css', 'html', 'sql', 'c#', 'c++']
-    });
-    var quill = new Quill('.editor', {
-        modules: {
-            syntax: true,              // Include syntax module
-            toolbar: toolbarOptions
-        },
-        theme: 'snow'
-
-
-    });
-    document.getElementById('creationForm').addEventListener('submit', function(){
-        document.getElementById('content').value=quill.root.innerHTML;
-        })
+  window.hljs.configure({
+    languages: ['javascript', 'php', 'css', 'html', 'sql', 'c#', 'c++']
+  })
+  let quill = new Quill('.editor', {
+    modules: {
+      syntax: true,
+      toolbar: toolbarOptions
+    },
+    theme: 'snow'
+  })
+  document.getElementById('creationForm').addEventListener('submit', function() {
+    document.getElementById('content').value = quill.root.innerHTML
+  })
 }
-
-
