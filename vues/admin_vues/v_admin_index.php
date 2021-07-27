@@ -1,11 +1,13 @@
 <script>
     $(document).ready(function () {
-        data['labels'] = <?= json_encode($labels, JSON_NUMERIC_CHECK) ?>;
-        data['datasets'][0]['data'] = <?= json_encode($datas, JSON_NUMERIC_CHECK) ?>;
+
         try {
-            var chart = new Chart(
+            data = chartData.getConfig();
+            data['data']['labels'] = <?= json_encode($labels, JSON_NUMERIC_CHECK) ?>;
+            data['data']['datasets'][0]['data'] = <?= json_encode($datas, JSON_NUMERIC_CHECK) ?>;
+            chart = new Chart(
                 document.getElementById('chart'),
-                config
+                data
             );
         } catch (error) {
             $('#chart').replaceWith('<div class="alert alert-danger" role="alert">La page ne répond pas</div>');
