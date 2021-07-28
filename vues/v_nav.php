@@ -10,7 +10,7 @@ require_once(__DIR__ . '/../controleurs/src/ArticleManager.php');
 $articleManager = new ArticleManager($bdd);
 $session        = new SessionManager($bdd);
 
-$pages = $articleManager->getAllArticles($bdd);
+$pages = $articleManager->getAllOnlinesArticles();
 if (!isset($parseArticleId)) {
     $parseArticleId = null;
 }

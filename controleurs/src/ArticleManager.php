@@ -33,6 +33,24 @@ class ArticleManager
         }
     }
 
+    public function getAllOnlinesArticles()
+    {
+        try {
+            $bdd = $this->bdd;
+            $requete = $bdd->query('SELECT `article_id` as `id`, `titre` as `name` FROM article WHERE `deleted_at` is null');
+            while ($data = $requete->fetch()) {
+                $articles[$data['id']] = $data['name'];
+            }
+            if (empty($articles)) {
+                return [];
+            } else {
+                return $articles;
+            }
+        } catch (mysqli_sql_exception $e) {
+            throw new Exception("Erreur interne du serveur");
+        }
+    }
+
     public function articleExists($articleId): bool
     {
         try {
