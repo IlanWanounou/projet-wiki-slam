@@ -1,10 +1,24 @@
 <?php if (isset($resultAdd)) {
     echo ($resultAdd); } ?>
 
+<noscript>
+    <div class="alert alert-danger" role="alert">
+        <i class="fas fa-exclamation-triangle"></i>
+        Cette page nécessite l'activation de JavaScript
+    </div>
+    <style>
+        .content {
+            display: none !important;
+        }
+    </style>
+</noscript>
+
+<div class="content">
 
 <h1>Gestion des images</h1>
 <span><?= $taileActuel.'ko sur '.DIRECTORY_IMAGE_MAXSIZE.' ko'?></span>
 <?php if($taileActuel<DIRECTORY_IMAGE_MAXSIZE) { ?>
+
     <div class="progress">
         <div class="progress-bar" role="progressbar" style="width: <?= $taileActuel*100/$taileMax?>%" aria-valuenow="<?= $taileActuel ?>" aria-valuemin="0" aria-valuemax="<?= $taileMax ?>"></div>
     </div>
@@ -18,7 +32,9 @@
 <?php
 
 }
+
 if($isEmpty) {?>
+    
     <a onclick="return confirm('Voulez vous vraiment supprimer toutes les images?')" href="?deleteAll=<?=$folder ?>" class="btn btn-danger btn-lg mt-3">Supprimer toutes les images</a>
 <?php } else { ?>
     <button id="deleteAllImage" class="btn btn-danger btn-lg mt-3"  disabled >Supprimer toutes les images</button>
@@ -47,4 +63,5 @@ if($isEmpty) {?>
         }
         ?>
     </div>
-<?php
+</div>
+

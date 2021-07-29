@@ -3,6 +3,17 @@
 use Controller\src\Admin\Article\ArticleCarousel;
 
 ?>
+<noscript>
+    <div class="alert alert-danger" role="alert">
+        <i class="fas fa-exclamation-triangle"></i>
+        Cette page nécessite l'activation de JavaScript
+    </div>
+    <style>
+        .container {
+            display: none !important;
+        }
+    </style>
+</noscript>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/hybrid.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">

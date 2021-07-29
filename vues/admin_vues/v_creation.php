@@ -24,8 +24,13 @@
             </div>
             <div class="form-group">
                 <label>Contenue</label>
+                <noscript>
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Cette fonctionnalité nécessite l'activation de JavaScript
+                    </div>
+                </noscript>
                 <div class="editor">
-                    Contenue de la page.
                 </div>
             </div>
             <div class="form-group">
