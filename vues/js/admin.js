@@ -108,20 +108,20 @@ $(document).ready(function () {
         css: editor.getValue()
       }, function (data) {
         if (data) {
-          console.log(data)
           $('#message').html(data).hide().show(500)
           initCodeCss = $('.CodeMirror-code').html()
           $('html, body').delay(50).animate({
             scrollTop: $('#top').offset().top
           }, 800, function () {
             window.location.hash = ''
+            verifCss()
           })
         }
       }
     )
   })
 
-  $('#reset-css-content').click(function () {
+  $('body').on('click', '#reset-css-content', function(e) {
     $('.CodeMirror').remove('')
     $('.CodeMirror-code').html(initCodeCss)
     editor = CodeMirror.fromTextArea(document.getElementById('myTextArea'), {
@@ -133,15 +133,6 @@ $(document).ready(function () {
       indentUnit: 4
     })
   })
-
-  setTimeout(function () {
-    img.onchange = evt => {
-      const [file] = img.files
-      if (file) {
-        prew.src = URL.createObjectURL(file)
-      }
-    }
-  }, 1)
 })
 
 function resetFooter () {
